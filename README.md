@@ -17,7 +17,7 @@ Project statuses reflect the supplied portfolio information. Public repository l
 - Next.js + React + TypeScript
 - Tailwind CSS
 - Framer Motion
-- Static export for Vercel and GitHub Pages
+- Native Next.js production output on Vercel; static export for GitHub Pages
 
 ## Local development
 ```bash
@@ -32,8 +32,8 @@ npm run build
 ```
 
 ## Deploying
-- **Vercel:** Import this repository and deploy using the default Next.js framework settings. The build output is a static export.
-- **GitHub Pages:** The included workflow builds with the repository base path and publishes the `out/` directory. Vercel builds do not use the GitHub Pages base path.
+- **Vercel:** Uses the native Next.js build and `.next/` output so Vercel can read the Next.js route manifests. Keep the Framework Preset set to **Next.js** and the Output Directory set to `.next` (the repository `vercel.json` pins this value).
+- **GitHub Pages:** The included GitHub Actions workflow sets `GITHUB_ACTIONS=true`, enabling `output: "export"` and the repository base path, then publishes the generated `out/` directory. These settings are isolated from Vercel builds.
 
 The contact form opens a pre-filled `mailto:` draft. Configure a real form endpoint before representing it as a server-submitted form.
 
