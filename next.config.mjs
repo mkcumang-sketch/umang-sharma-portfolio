@@ -3,7 +3,8 @@ const repositoryName = "umang-sharma-portfolio";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  // GitHub Pages needs a static export; Vercel uses the native Next.js build.
+  ...(isGitHubPages ? { output: "export" } : {}),
   trailingSlash: true,
   basePath: isGitHubPages ? `/${repositoryName}` : "",
   images: { unoptimized: true },
