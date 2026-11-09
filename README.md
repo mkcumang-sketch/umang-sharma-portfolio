@@ -1,35 +1,44 @@
-# Umang Sharma — AI, Design & Operations
+# Umang Sharma — Technical Product Builder
 
-A responsive, motion-led portfolio for Umang Sharma, showcasing selected work across AI, automation, business systems and digital products.
+A responsive, editorial personal portfolio built with Next.js, React, TypeScript, Tailwind CSS and Framer Motion.
 
-## Design and experience
-- Custom Three.js 3D hero sculpture with pointer-responsive movement
-- Editorial typography and warm gold / charcoal / ivory palette
-- Responsive layout with mobile navigation
-- Scroll-reveal transitions and reduced-motion support
-- CSS-built project visuals, no stock-image placeholders
+## Experience
+- Swiss-minimalist graphite / bone palette with restrained monochrome motion
+- Interactive cursor-responsive hero sculpture built with CSS 3D transforms
+- Staggered scroll reveals and hover tilt with reduced-motion support
+- Expandable project case notes with honest project-stage labels
+- Responsive navigation and `Ctrl/Cmd + K` quick navigation
+- Contact form that prepares an email draft; it does not pretend to submit to a backend
 
-## Projects and current stages
-The stages below are the project owner's supplied statuses:
-- **TRUV CA / LedgerOS** — In development
-- **Ask2Global / TaskFlow** — Live demo
-- **Dream Properties** — Client project
-- **TRUV Tech CRM** — Live demo
-- **TRUV Tech Official Website** — In development
-- **EssentialRush** — Client project
+## Projects
+Project statuses reflect the supplied portfolio information. Public repository links are included only where verified. No unverified demo URLs, customer metrics, or testimonials are presented.
 
-Public repository links are shown only where a matching repository was verified. The TRUV Tech CRM and official website cards do not imply a public code repository or a deployed URL.
+## Stack
+- Next.js + React + TypeScript
+- Tailwind CSS
+- Framer Motion
+- Static export for Vercel and GitHub Pages
 
-## Technology
-- Semantic HTML, CSS and vanilla JavaScript
-- Three.js loaded from jsDelivr CDN
-- GitHub Pages static hosting
+## Local development
+```bash
+npm ci
+npm run dev
+```
 
-## Local preview
-Serve the repository folder using a local web server (for example, VS Code Live Server). The 3D scene uses an ES module import and may not run when opening the HTML file directly via `file://`.
+## Production build
+```bash
+npm run typecheck
+npm run build
+```
+
+## Deploying
+- **Vercel:** Import this repository and deploy using the default Next.js framework settings. The build output is a static export.
+- **GitHub Pages:** The included workflow builds with the repository base path and publishes the `out/` directory. Vercel builds do not use the GitHub Pages base path.
+
+The contact form opens a pre-filled `mailto:` draft. Configure a real form endpoint before representing it as a server-submitted form.
 
 ## Contact
 - Email: truvtechteam@gmail.com
 - Phone: +91 8960082060
-
-**TRUV TECH & CONSULTANCY** — Your Vision. Our Expertise.
+- Company: TRUV TECH & CONSULTANCY
+- Tagline: Your Vision. Our Expertise.
