@@ -21,7 +21,7 @@ Project statuses reflect the supplied portfolio information. Public repository l
 
 ## Local development
 ```bash
-npm ci
+npm install
 npm run dev
 ```
 
