@@ -1,0 +1,32 @@
+/* Portfolio content refresh: service cards, company signature and direct contact */
+.game-skip-link{position:fixed;z-index:100;top:8px;left:8px;transform:translateY(-150%);padding:10px 14px;background:#f0d18a;color:#111;font:700 12px Arial,sans-serif;border-radius:5px}
+.game-skip-link:focus{transform:translateY(0)}
+.spawn-role{margin:-10px 0 14px;color:var(--game-gold);font:10px var(--mono);letter-spacing:.2em}
+.company-signature{display:flex;align-items:center;gap:16px;max-width:430px;margin:0 0 36px;padding:18px 20px;border:1px solid var(--game-line);border-radius:10px;background:linear-gradient(135deg,#202a1f,#141b14)}
+.company-mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #d7b15b88;border-radius:8px;color:#f0d18a;font-size:20px;font-weight:800}
+.company-signature div{display:grid;gap:4px}
+.company-signature small,.service-card small{color:#89977c;font:8px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.company-signature strong{font-size:13px;letter-spacing:.01em}
+.company-signature div span{color:#d8bd7d;font-size:11px}
+.service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.service-card{position:relative;display:flex;gap:15px;align-items:flex-start;min-height:132px;padding:21px;border:1px solid var(--game-line);border-radius:10px;background:linear-gradient(145deg,#202a1f,#141b14);transition:transform .2s,border-color .2s}
+.service-card:hover{transform:translateY(-3px);border-color:#d7ad5b88}
+.service-number{color:var(--game-gold);font:10px var(--mono);padding-top:3px}
+.service-card h3{margin:7px 0 6px;font-size:15px;letter-spacing:-.03em}
+.service-card p{margin:0;color:#aab39f;font-size:10px;line-height:1.7}
+.service-arrow{margin-left:auto;color:var(--game-gold);font-size:16px}
+.inventory-heading{margin:68px 0 22px}
+.inventory-heading .game-eyebrow{margin-bottom:8px}
+.inventory-heading h3{margin:0;font-size:28px;letter-spacing:-.05em}
+.contact-direct{display:flex;flex-wrap:wrap;gap:13px 19px;margin-top:24px}
+.contact-direct a{color:#d9c38e;font:8px var(--mono);letter-spacing:.08em}
+.contact-direct a:first-child{color:var(--game-gold)}
+.contact-company{display:grid;gap:5px;margin-top:25px;color:#e8dfc8;font-size:11px;font-weight:700;letter-spacing:.04em}
+.contact-company span{color:#aab39f;font-size:10px;font-weight:400;letter-spacing:0}
+@media(max-width:760px){
+  .service-grid{grid-template-columns:1fr}
+  .service-card{min-height:112px;padding:17px}
+  .company-signature{margin-bottom:25px}
+  .contact-direct{gap:12px 14px}
+}
+@media(prefers-reduced-motion:reduce){.service-card{transition:none!important}}
