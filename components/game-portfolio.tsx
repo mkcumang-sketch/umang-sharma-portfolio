@@ -14,8 +14,7 @@ const zones = [
 
 export function GamePortfolio() {
   const [activeZone, setActiveZone] = useState(0);
-  const [soundOn, setSoundOn] = useState(false);
-  const [playerName] = useState("VISITOR_001");
+  const playerName = "VISITOR_001";
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -60,7 +59,7 @@ export function GamePortfolio() {
       <nav className="game-nav" aria-label="Game world zones">
         {zones.map((zone, index) => <button key={zone.id} type="button" className={activeZone === index ? "is-active" : ""} onClick={() => jump(index)}><span>{zone.short}</span>{zone.label}</button>)}
       </nav>
-      <div className="player-status"><span className="online-indicator"/> {playerName}<button type="button" className="sound-toggle" aria-pressed={soundOn} onClick={() => setSoundOn((value) => !value)}>{soundOn ? "SOUND ON" : "SOUND OFF"}</button></div>
+      <div className="player-status"><span className="online-indicator"/> {playerName}</div>
     </header>
 
     <aside className="game-quest" aria-label="Current quest">
