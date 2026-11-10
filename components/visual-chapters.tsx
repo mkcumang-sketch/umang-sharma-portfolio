@@ -14,7 +14,7 @@ const chapters = [
 ];
 
 function PixelArtwork() {
-  return <div className="art-pixels" aria-hidden="true"><div className="pixel-grid">{Array.from({ length: 64 }, (_, i) => <i key={i} style={{ "--i": i } as CSSProperties} />)}</div><span className="art-coordinate">X 014 / Y 028</span><b>U<span>.</span></b></div>;
+  return <div className="art-pixels" aria-hidden="true"><div className="pixel-grid">{Array.from({ length: 64 }, (_, i) => <i key={i} style={{ "--i": i, opacity: .15 + (i % 8) * .09, backgroundColor: i % 9 === 0 || i % 7 === 0 ? "#a66f4d" : "#7d807a" } as CSSProperties} />)}</div><span className="art-coordinate">X 014 / Y 028</span><b>U<span>.</span></b></div>;
 }
 function BrainArtwork() {
   return <svg className="art-brain" viewBox="0 0 520 420" role="img" aria-label="Abstract neural network diagram"><circle cx="260" cy="210" r="165" fill="none" stroke="#b9a28b" strokeOpacity=".14"/>{Array.from({length:22},(_,i)=>{const a=i*2.399,r=42+(i%5)*25,x=260+Math.cos(a)*r,y=210+Math.sin(a)*r;return <g key={i}><line x1="260" y1="210" x2={x} y2={y} stroke="#b9a28b" strokeOpacity=".5"/><circle cx={x} cy={y} r={i%4===0?7:4} fill={i%4===0?"#e7c9a8":"#8f9690"}/></g>})}<circle cx="260" cy="210" r="22" fill="#e7c9a8"/><circle cx="260" cy="210" r="36" fill="none" stroke="#e7c9a8" strokeOpacity=".5"/></svg>;
