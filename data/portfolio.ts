@@ -104,6 +104,8 @@ export const toolkit = [
 
 export const links = {
   github: "https://github.com/mkcumang-sketch",
+  linkedin: "https://www.linkedin.com/in/umang-sharma-4a21a5350/",
+  instagram: "https://www.instagram.com/truvofficial_/",
   email: "truvtechteam@gmail.com",
   phone: "+918960082060",
 };
