@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   ["About", "#about"],
+  ["Systems", "#systems"],
   ["Work", "#work"],
   ["Toolkit", "#toolkit"],
   ["Contact", "#contact"],
@@ -56,7 +57,7 @@ export function SiteHeader() {
         </nav>
         <div className="header-actions">
           <button className="command-trigger" onClick={() => setCommandOpen(true)} aria-label="Open command menu">
-            <span>⌘ K</span>
+            <span>CTRL K</span>
           </button>
           <button className="menu-toggle" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? "Close navigation" : "Open navigation"}>
             <span /><span />
