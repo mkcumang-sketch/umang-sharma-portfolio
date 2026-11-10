@@ -447,3 +447,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .retro-window-controls button,.arcade-controls button,.arcade-selector button,.mode-switcher button{min-height:40px}
   .quick-dock a{min-height:42px}
 }
+
+/* Fixed Pac-Man progress rail */
+.section-rail{position:fixed;z-index:76;right:17px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:auto}
+.rail-caption,.rail-count{font:7px var(--os-mono);letter-spacing:.12em;color:#71717a;writing-mode:vertical-rl}
+.rail-track{height:min(56vh,540px);min-height:300px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;position:relative;width:18px}
+.rail-track:before{content:"";position:absolute;top:5px;bottom:5px;width:1px;background:#3f3f46}
+.rail-node{position:relative;z-index:1;width:18px;height:18px;display:grid;place-items:center}
+.rail-node-dot{width:6px;height:6px;border:1px solid #71717a;border-radius:1px;background:#09090b;transition:background .2s,border-color .2s,transform .2s}
+.rail-node.is-consumed .rail-node-dot{background:var(--mode-accent);border-color:var(--mode-accent);transform:scale(1.15)}
+.rail-node[aria-current="location"] .rail-node-dot{box-shadow:0 0 0 4px color-mix(in srgb,var(--mode-accent) 18%,transparent)}
+.rail-pacman{position:absolute;left:50%;width:13px;height:13px;border-radius:50%;background:var(--mode-accent);clip-path:polygon(50% 50%,100% 0,100% 100%);transform:translate(-50%,-50%);z-index:3;filter:drop-shadow(0 0 7px color-mix(in srgb,var(--mode-accent) 55%,transparent));pointer-events:none}
+.rail-tooltip{position:absolute;right:24px;top:50%;transform:translateY(-50%);padding:6px 8px;border:1px solid #3f3f46;background:#101113;color:#e4e4e7;font:8px var(--os-mono);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.rail-node:hover .rail-tooltip,.rail-node:focus-visible .rail-tooltip{opacity:1}
+@media(max-width:600px){.section-rail{right:5px;gap:7px}.rail-track{height:44vh;min-height:230px;width:14px}.rail-node{width:14px;height:14px}.rail-node-dot{width:5px;height:5px}.rail-caption,.rail-count{font-size:6px}.rail-tooltip{display:none}}
