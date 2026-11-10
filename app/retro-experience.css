@@ -477,3 +477,20 @@ main{position:relative;z-index:1}\n.contact-social-links{display:flex;gap:14px 2
 .footer-socials a:hover{color:var(--mode-accent);transform:translateY(-2px)}
 @media(max-width:760px){.motion-atmosphere{inset:64px 0 0;opacity:.24}.atmosphere-orbit-a{left:-48vw}.atmosphere-orbit-b{right:-50vw}.footer-socials{gap:12px}}
 @media(prefers-reduced-motion:reduce){.atmosphere-orbit-a,.atmosphere-orbit-b{animation:none!important}.atmosphere-pixel{display:none}}
+
+
+/* Live AI connector controls */
+.voice-call-panel{margin-top:18px;padding:14px;border:1px solid #3f3f46;background:#0b0c0d;display:grid;gap:10px}
+.voice-call-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;font:9px var(--os-mono);color:#e4e4e7}
+.voice-call-heading span{color:#a1a1aa;font-size:8px}
+.voice-call-label{font:9px var(--os-mono);color:#a1a1aa}
+.voice-call-phone{width:100%;min-width:0;padding:11px 12px;border:1px solid #52525b;background:#111315;color:#f4f4f5;font:12px var(--os-mono);outline:none}
+.voice-call-phone:focus{border-color:#10b981;box-shadow:0 0 0 2px #10b98122}
+.voice-call-consent{display:flex;gap:9px;align-items:flex-start;color:#a1a1aa;font:9px/1.5 var(--os-mono)}
+.voice-call-consent input{margin:2px 0 0;accent-color:#10b981;flex:0 0 auto}
+.voice-call-submit{justify-self:start}
+.voice-call-submit:disabled{opacity:.45;cursor:not-allowed}
+.voice-call-status{margin:0;color:#d4d4d8;font:9px/1.5 var(--os-mono);overflow-wrap:anywhere}
+.voice-call-status span{display:block;color:#a1a1aa;margin-top:4px}
+.terminal-error{color:#fca5a5;font:10px/1.5 var(--os-mono);overflow-wrap:anywhere}
+@media(max-width:600px){.voice-call-panel{padding:11px}.voice-call-heading{align-items:flex-start;flex-direction:column;gap:5px}}
