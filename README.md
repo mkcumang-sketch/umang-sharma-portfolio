@@ -42,3 +42,18 @@ The contact form opens a pre-filled `mailto:` draft. Configure a real form endpo
 - Phone: +91 8960082060
 - Company: TRUV TECH & CONSULTANCY
 - Tagline: Your Vision. Our Expertise.
+
+
+## Live AI Sandbox connectors
+
+The AI Sandbox uses server-side API routes. It does not expose provider credentials to the browser.
+
+### LLM (Ollama / LiteLLM / OpenAI-compatible)
+
+Set `LLM_BASE_URL`, `LLM_MODEL`, and (when required) `LLM_API_KEY` in the deployment environment. The base URL should include the API prefix, for example `https://your-gateway.example/v1`. A local Ollama example is `http://127.0.0.1:11434/v1`; that local address is only reachable from the same machine, not from Vercel. For production, configure a private/reachable HTTPS gateway.
+
+### Sarvam outbound voice calls
+
+Set `SARVAM_API_KEY`, `SARVAM_ORG_ID`, `SARVAM_WORKSPACE_ID`, `SARVAM_APP_ID` (or the legacy `SARVAM_AGENT_ID` name), `SARVAM_APP_VERSION`, `SARVAM_CONNECTION_ID`, and `SARVAM_AGENT_PHONE_NUMBER`. Also set `SARVAM_ALLOWED_TEST_NUMBERS` to a comma-separated allowlist of E.164 phone numbers. The allowlist is mandatory: it prevents anonymous visitors from triggering calls to arbitrary numbers and incurring telephony charges.
+
+The voice demo sends an outbound call request to Sarvam's Voice Agents API. An accepted request returns an attempt ID; it does not mean the call was answered. Configure Sarvam call-result webhooks separately if you need post-call transcripts and dispositions. Never commit real keys or phone numbers.
