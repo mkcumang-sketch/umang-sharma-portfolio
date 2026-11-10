@@ -1,4 +1,5 @@
 import { ExperienceModeProvider } from "@/components/experience-mode";
+import { MotionAtmosphere } from "@/components/motion-atmosphere";
 import { Hero } from "@/components/hero";
 import { CreatorCard, NarrativeSections } from "@/components/scrollytelling/narrative-sections";
 import { WindowCascade } from "@/components/os-windows/window-cascade";
@@ -12,6 +13,7 @@ import { links } from "@/data/portfolio";
 
 export default function HomePage() {
   return <ExperienceModeProvider>
+    <MotionAtmosphere/>
     <SectionRail/>
     <main id="main-content">
       <Hero/>
