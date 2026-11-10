@@ -12,7 +12,7 @@ export function LlmTerminal() {
   const [responseText, setResponseText] = useState("");
   const [busy, setBusy] = useState(false);
   const [typing, setTyping] = useState(false);
-  const [toolLabel, setToolLabel] = useState("LLM API / READY");
+  const [toolLabel, setToolLabel] = useState("LLM GATEWAY / CONFIG REQUIRED");
   const [history, setHistory] = useState<Exchange[]>([]);
   const [error, setError] = useState("");
   const outputRef = useRef<HTMLDivElement>(null);
