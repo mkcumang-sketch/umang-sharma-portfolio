@@ -6,11 +6,14 @@ import type { CSSProperties } from "react";
 const chapters = [
   { id: "pixels", no: "01", label: "PIXELS / THE DETAILS", title: <>It starts with<br /><em>one pixel.</em></>, copy: "Small decisions create the feeling of a product. Spacing, rhythm, hierarchy and the moments between clicks all add up to an experience people can understand.", theme: "paper" },
   { id: "brain", no: "02", label: "BRAIN / THE BLUEPRINT", title: <>First, a thought.<br /><em>Then a system.</em></>, copy: "Every build begins by making the problem visible: mapping the moving parts, finding the friction and deciding what should happen next.", theme: "dark" },
-  { id: "dna", no: "03", label: "DNA / THE BUILDING BLOCKS", title: <>Logic gives ideas<br /><em>a structure.</em></>, copy: "A useful product is a set of connected decisions: interfaces, data, APIs, automation and the people who rely on them.", theme: "sand" },
-  { id: "emotion", no: "04", label: "EMOTION / THE HUMAN SIDE", title: <>Technology should<br /><em>feel intuitive.</em></>, copy: "The best workflow is not the one with the most features. It is the one that makes the next action feel obvious.", theme: "dark" },
-  { id: "hands", no: "05", label: "HANDS / MAKING IT REAL", title: <>From rough idea<br /><em>to real output.</em></>, copy: "I work across prototypes, product interfaces, integrations and operational tools—testing the details as the system takes shape.", theme: "paper" },
-  { id: "windows", no: "06", label: "WINDOWS / SELECTED WORK", title: <>Different problems.<br /><em>Purposeful builds.</em></>, copy: "A growing collection of product work, client projects and experiments. Each one starts with a specific problem to make easier.", theme: "sand" },
-  { id: "world", no: "07", label: "WORLD / WHAT CONNECTS", title: <>Built for people,<br /><em>not just screens.</em></>, copy: "From a solo operator to a growing team, good systems connect the work happening across tools, places and people.", theme: "dark" },
+  { id: "concept", no: "03", label: "CONCEPT / THE FIRST SHAPE", title: <>Give the thought<br /><em>a direction.</em></>, copy: "A clear concept turns a loose brief into a shape people can react to: a map of the experience, its constraints and the smallest useful first version.", theme: "paper" },
+  { id: "dna", no: "04", label: "DNA / THE BUILDING BLOCKS", title: <>Logic gives ideas<br /><em>a structure.</em></>, copy: "A useful product is a set of connected decisions: interfaces, data, APIs, automation and the people who rely on them.", theme: "sand" },
+  { id: "emotion", no: "05", label: "EMOTION / THE HUMAN SIDE", title: <>Technology should<br /><em>feel intuitive.</em></>, copy: "The best workflow is not the one with the most features. It is the one that makes the next action feel obvious.", theme: "dark" },
+  { id: "beauty", no: "06", label: "BEAUTY / THE VISUAL LANGUAGE", title: <>Make it useful.<br /><em>Make it felt.</em></>, copy: "Visual craft is not decoration. It gives a product rhythm, confidence and a visual language that helps people know where to look and what matters.", theme: "sand" },
+  { id: "hands", no: "07", label: "HANDS / MAKING IT REAL", title: <>From rough idea<br /><em>to real output.</em></>, copy: "I work across prototypes, product interfaces, integrations and operational tools—testing the details as the system takes shape.", theme: "paper" },
+  { id: "windows", no: "08", label: "WINDOWS / SELECTED WORK", title: <>Different problems.<br /><em>Purposeful builds.</em></>, copy: "A growing collection of product work, client projects and experiments. Each one starts with a specific problem to make easier.", theme: "sand" },
+  { id: "tetris", no: "09", label: "TETRIS / CONNECT THE PIECES", title: <>Every piece has<br /><em>a place.</em></>, copy: "Products are made of many moving parts. The craft is connecting them into one coherent experience without making the complexity visible to the person using it.", theme: "dark" },
+  { id: "world", no: "10", label: "WORLD / WHAT CONNECTS", title: <>Built for people,<br /><em>not just screens.</em></>, copy: "From a solo operator to a growing team, good systems connect the work happening across tools, places and people.", theme: "dark" },
 ];
 
 function PixelArtwork() {
@@ -25,6 +28,9 @@ function DnaArtwork() {
 function EmotionArtwork() {
   return <div className="art-wave" aria-hidden="true"><div className="wave-orbit wave-one"/><div className="wave-orbit wave-two"/><div className="wave-bars">{Array.from({length:40},(_,i)=><i key={i} style={{height:(12+Math.abs(Math.sin(i*.52)*76))+"%",animationDelay:(i*18)+"ms"}}/>)}</div><span>HUMAN INPUT / CLEAR OUTPUT</span></div>;
 }
+function ConceptArtwork() { return <div className="art-concept" aria-hidden="true"><div className="concept-orbit"/><div className="concept-card concept-card-a"><small>PROBLEM</small><b>Find the<br/>friction.</b></div><div className="concept-card concept-card-b"><small>IDEA</small><b>Shape the<br/>answer.</b></div><div className="concept-cross">+</div></div>; }
+function BeautyArtwork() { return <div className="art-beauty" aria-hidden="true"><div className="beauty-circle"/><div className="beauty-arch"/><b>FORM<br/><em>&</em><br/>FEELING</b><span>VISUAL LANGUAGE / 2026</span></div>; }
+function TetrisArtwork() { return <div className="art-tetris" aria-hidden="true"><div className="tetris-grid">{Array.from({length:64},(_,i)=><i key={i} className={[5,6,13,14,21,22,29,30,37,38,44,45,46,52,53,54].includes(i)?"filled":""}/>)}</div><span>CONNECT THE PIECES / BUILD THE WHOLE</span></div>; }
 function HandsArtwork() {
   return <div className="art-hands" aria-hidden="true"><div className="hand-card"><span>01 / DISCOVER</span><b>Understand<br/>the problem.</b><i>↗</i></div><div className="hand-card hand-card-back"><span>02 / BUILD</span><b>Shape the<br/>solution.</b><i>↗</i></div><div className="hand-stamp">MAKE<br/>IT<br/>USEFUL</div></div>;
 }
@@ -37,10 +43,13 @@ function WorldArtwork() {
 function ChapterArtwork({id}:{id:string}) {
   if(id==="pixels") return <PixelArtwork/>;
   if(id==="brain") return <BrainArtwork/>;
+  if(id==="concept") return <ConceptArtwork/>;
   if(id==="dna") return <DnaArtwork/>;
   if(id==="emotion") return <EmotionArtwork/>;
+  if(id==="beauty") return <BeautyArtwork/>;
   if(id==="hands") return <HandsArtwork/>;
   if(id==="windows") return <WindowsArtwork/>;
+  if(id==="tetris") return <TetrisArtwork/>;
   return <WorldArtwork/>;
 }
 export function VisualChapters() {
