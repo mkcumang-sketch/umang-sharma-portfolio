@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { links, projects, toolkit } from "@/data/portfolio";
+import { useEffect, useRef, useState } from "react";
+import { links, projects, toolkit, type Project } from "@/data/portfolio";
 import { LlmTerminal } from "@/components/ai-sandbox/llm-terminal";
 
 const zones = [
@@ -14,7 +14,24 @@ const zones = [
 
 export function GamePortfolio() {
   const [activeZone, setActiveZone] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const closeProjectButton = useRef<HTMLButtonElement>(null);
   const playerName = "VISITOR_001";
+
+  useEffect(() => {
+    if (!selectedProject) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeProjectButton.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedProject(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selectedProject]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -54,6 +71,7 @@ export function GamePortfolio() {
   };
 
   return <div className="game-world">
+    <a className="skip-link" href="#main-content">Skip to content</a>
     <header className="game-hud">
       <a className="game-brand" href="#spawn" aria-label="Umang Sharma home"><span className="brand-cube">U</span><span>UMANG<span className="brand-muted">.WORLD</span><small>PORTFOLIO / BUILD 2026</small></span></a>
       <nav className="game-nav" aria-label="Game world zones">
@@ -92,7 +110,7 @@ export function GamePortfolio() {
 
       <section className="game-zone profile-zone" id="profile">
         <div className="zone-heading"><span>ZONE 02 / PLAYER PROFILE</span><span>QUEST LOG / ABOUT</span></div>
-        <div className="profile-layout"><div><p className="game-eyebrow">THE PLAYER BEHIND THE BUILDS</p><h2>Curious mind.<br/><em>Builder mindset.</em></h2></div><div className="profile-copy"><p>I'm a technology builder and founder of TRUV TECH &amp; CONSULTANCY. I work across product development, AI-assisted workflows, business automation and digital experiences.</p><p>I like turning messy, manual processes into clear systems — from a first product idea to the interface people use every day.</p><a href={links.linkedin} target="_blank" rel="noreferrer">OPEN PLAYER PROFILE ↗</a></div></div>
+        <div className="profile-layout"><div><p className="game-eyebrow">THE PLAYER BEHIND THE BUILDS</p><h2>Curious mind.<br/><em>Builder mindset.</em></h2></div><div className="profile-copy"><p>I'm a technology builder and founder of TRUV TECH &amp; CONSULTANCY. I work across product development, AI-assisted workflows, business automation and digital experiences.</p><p>I like turning messy, manual processes into clear systems — from a first product idea to the interface people use every day.</p><div className="capability-list" aria-label="Services and capabilities">{["Business & CRM automation", "CA & accounting automation", "Hospital workflow automation", "AI-assisted operations", "Web apps & portals", "Workflow integrations"].map((item) => <span key={item}>{item}</span>)}</div><a href={links.linkedin} target="_blank" rel="noreferrer">OPEN PLAYER PROFILE ↗</a></div></div>
         <div className="stats-grid"><div className="stat-tile"><small>CLASS</small><strong>Builder</strong><span>Product / Systems</span></div><div className="stat-tile"><small>GUILD</small><strong>TRUV TECH</strong><span>Founder</span></div><div className="stat-tile"><small>REGION</small><strong>India</strong><span>Remote-ready</span></div><div className="stat-tile"><small>CORE QUEST</small><strong>Make it useful</strong><span>Build · Test · Improve</span></div></div>
       </section>
 
@@ -101,7 +119,7 @@ export function GamePortfolio() {
         <div className="zone-title-row"><h2>Worlds I've<br/><em>helped build.</em></h2><p>Each island represents a product, client project or capability. Select a project to open its details and verified repository where available.</p></div>
         <div className="project-islands">{projects.map((project, index) => <article className={"project-island project-island-" + (index % 4)} key={project.number}>
           <div className="project-island-art"><span className="island-number">{project.number}</span><div className="mini-world"><i/><i/><i/></div><span className="island-type">{project.category}</span></div>
-          <div className="project-island-info"><div><span className={"project-status-dot status-" + project.status.toLowerCase().replaceAll(" ", "-")}/>{project.status}</div><h3>{project.name}</h3><p>{project.description}</p><div className="project-tags">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links">{project.repository ? <a href={project.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>DETAILS IN PORTFOLIO</span>}</div></div>
+          <div className="project-island-info"><div><span className={"project-status-dot status-" + project.status.toLowerCase().replaceAll(" ", "-")}/>{project.status}</div><h3>{project.name}</h3><p>{project.description}</p><div className="project-tags">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links"><button className="project-inspect" type="button" onClick={() => setSelectedProject(project)} aria-label={`Inspect ${project.name}`}>INSPECT ISLAND ↗</button>{project.repository ? <a href={project.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>NO PUBLIC REPOSITORY</span>}</div></div>
         </article>)}</div>
       </section>
 
@@ -115,12 +133,23 @@ export function GamePortfolio() {
       <section className="game-zone contact-zone" id="contact">
         <div className="zone-heading"><span>ZONE 05 / FINAL PORTAL</span><span>QUEST COMPLETE? START A NEW ONE.</span></div>
         <div className="portal-scene"><div className="portal-ring portal-ring-back"/><div className="portal-ring portal-ring-front"/><div className="portal-core">↗</div></div>
-        <div className="contact-content"><p className="game-eyebrow">NEW QUEST AVAILABLE</p><h2>Have a good<br/><em>problem to solve?</em></h2><p>Tell me what you're building, improving or trying to automate. Let's shape the right solution around it.</p><a className="game-primary" href={"mailto:" + links.email}>START A CONVERSATION <span>↗</span></a><div className="contact-links"><a href={links.github} target="_blank" rel="noreferrer">GITHUB ↗</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={links.instagram} target="_blank" rel="noreferrer">INSTAGRAM ↗</a></div></div>
+        <div className="contact-content"><p className="game-eyebrow">NEW QUEST AVAILABLE</p><h2>Have a good<br/><em>problem to solve?</em></h2><p>Tell me what you're building, improving or trying to automate. Let's shape the right solution around it.</p><a className="game-primary" href={"mailto:" + links.email}>START A CONVERSATION <span>↗</span></a><div className="contact-links"><a href={links.github} target="_blank" rel="noreferrer">GITHUB ↗</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={links.instagram} target="_blank" rel="noreferrer">INSTAGRAM ↗</a><a href={`tel:${links.phone}`}>CALL {links.phone} ↗</a></div></div>
         <footer className="game-footer"><span>UMANG.WORLD / PORTFOLIO BUILD 2026</span><span>THANKS FOR EXPLORING.</span></footer>
       </section>
     </main>
 
     <nav className="game-minimap" aria-label="Zone minimap">{zones.map((zone, index) => <button key={zone.id} type="button" onClick={() => jump(index)} className={activeZone === index ? "is-active" : ""} aria-label={zone.label}><i/><span>{zone.short}</span></button>)}</nav>
     <div className="game-controls"><kbd>W</kbd><kbd>S</kbd><span>MOVE ZONE</span><kbd>↵</kbd><span>ENTER</span></div>
+    {selectedProject && <div className="project-modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedProject(null); }}>
+      <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description">
+        <div className="project-modal-topline"><span>PROJECT ISLAND / {selectedProject.number}</span><button ref={closeProjectButton} type="button" onClick={() => setSelectedProject(null)} aria-label="Close project details">CLOSE ×</button></div>
+        <p className="game-eyebrow">{selectedProject.category}</p>
+        <h2 id="project-modal-title">{selectedProject.name}</h2>
+        <p id="project-modal-description">{selectedProject.details}</p>
+        <div className="project-modal-status"><span className={"project-status-dot status-" + selectedProject.status.toLowerCase().replaceAll(" ", "-")}/>{selectedProject.status}</div>
+        <div className="project-tags">{selectedProject.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <div className="project-modal-actions">{selectedProject.repository ? <a href={selectedProject.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>Public repository not listed</span>}<button type="button" onClick={() => setSelectedProject(null)}>BACK TO WORLD</button></div>
+      </section>
+    </div>}
   </div>;
 }
