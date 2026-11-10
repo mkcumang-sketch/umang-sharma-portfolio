@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { RetroWindow } from "@/components/os-windows/retro-window";
 
-const quickPrompts = ["What does Umang build?", "Explain the voice agent architecture.", "What is TRUV LedgerOS?", "How does the MCP demo work?"];
+const quickPrompts = ["What does Umang build?", "How do Umang’s systems connect?", "What is TRUV LedgerOS?", "How does the MCP demo work?"];
 type Exchange = { question: string; answer: string };
 
 export function LlmTerminal() {
