@@ -461,3 +461,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .rail-tooltip{position:absolute;right:24px;top:50%;transform:translateY(-50%);padding:6px 8px;border:1px solid #3f3f46;background:#101113;color:#e4e4e7;font:8px var(--os-mono);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
 .rail-node:hover .rail-tooltip,.rail-node:focus-visible .rail-tooltip{opacity:1}
 @media(max-width:600px){.section-rail{right:5px;gap:7px}.rail-track{height:44vh;min-height:230px;width:14px}.rail-node{width:14px;height:14px}.rail-node-dot{width:5px;height:5px}.rail-caption,.rail-count{font-size:6px}.rail-tooltip{display:none}}
+
+
+/* Motion graphics layer: a quiet system HUD, not a template gradient */
+.global-scroll-progress{position:fixed;z-index:130;top:0;left:0;right:0;height:2px;transform-origin:0 50%;background:var(--mode-accent);box-shadow:0 0 14px color-mix(in srgb,var(--mode-accent) 65%,transparent);pointer-events:none}
+.motion-atmosphere{position:fixed;inset:76px 0 0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.42}
+.atmosphere-orbit{position:absolute;width:min(42vw,560px);aspect-ratio:1;border:1px solid #52525b20;border-radius:50%;will-change:transform}
+.atmosphere-orbit-a{left:-24vw;top:12vh;box-shadow:0 0 0 42px #ffffff03,0 0 0 84px #ffffff02;animation:atmosphere-drift 38s ease-in-out infinite alternate}
+.atmosphere-orbit-b{right:-28vw;top:48vh;width:min(48vw,650px);border-style:dashed;animation:atmosphere-drift-reverse 46s ease-in-out infinite alternate}
+.atmosphere-pixel{position:absolute;display:block;background:var(--mode-accent);box-shadow:0 0 12px color-mix(in srgb,var(--mode-accent) 50%,transparent);opacity:.3;will-change:transform,opacity}
+@keyframes atmosphere-drift{from{transform:translate3d(0,0,0) rotate(0deg)}to{transform:translate3d(4vw,5vh,0) rotate(24deg)}}
+@keyframes atmosphere-drift-reverse{from{transform:translate3d(0,0,0) rotate(0deg)}to{transform:translate3d(-3vw,-4vh,0) rotate(-18deg)}}
+.footer-socials{display:flex;gap:16px;flex-wrap:wrap}
+.footer-socials a{font:9px var(--os-mono);color:var(--os-muted);transition:color .2s,transform .2s}
+.footer-socials a:hover{color:var(--mode-accent);transform:translateY(-2px)}
+@media(max-width:760px){.motion-atmosphere{inset:64px 0 0;opacity:.24}.atmosphere-orbit-a{left:-48vw}.atmosphere-orbit-b{right:-50vw}.footer-socials{gap:12px}}
+@media(prefers-reduced-motion:reduce){.atmosphere-orbit-a,.atmosphere-orbit-b{animation:none!important}.atmosphere-pixel{display:none}}
