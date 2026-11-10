@@ -15,7 +15,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .skip-link:focus{transform:translateY(0)}
 .portfolio-shell{position:relative;isolation:isolate;--mode-accent:var(--os-green)}
 .portfolio-shell[data-mode="design"]{--mode-accent:var(--os-amber)}
-.section-shell{padding-left:clamp(24px,7.5vw,128px);padding-right:clamp(42px,10vw,170px)}
+main{position:relative;z-index:1}\n.contact-social-links{display:flex;gap:14px 20px;flex-wrap:wrap}\n.section-shell{padding-left:clamp(24px,7.5vw,128px);padding-right:clamp(42px,10vw,170px)}
 .terminal-eyebrow,.section-kicker,.hero-terminal-top,.hero-system-line,.console-header,.console-stats,.narrative-meta,.narrative-next,.rpg-card-top,.rpg-mode-line,.window-hint,.sandbox-label,.voice-wave-footer,.voice-controls,.sandbox-stack-tags,.sandbox-footnote,.terminal-welcome,.terminal-tool,.terminal-input-row,.terminal-quick-prompts,.project-meta-row,.project-tech-tags,.project-detail-actions,.arcade-label,.arcade-hints,.preview-index,.project-archive,.stack-progress,.contact-endpoints,.contact-dialog-bar{font-family:var(--os-mono)}
 .terminal-eyebrow{margin:0 0 14px;color:var(--os-muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
 .section-kicker{display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--os-muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
@@ -465,7 +465,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* Motion graphics layer: a quiet system HUD, not a template gradient */
 .global-scroll-progress{position:fixed;z-index:130;top:0;left:0;right:0;height:2px;transform-origin:0 50%;background:var(--mode-accent);box-shadow:0 0 14px color-mix(in srgb,var(--mode-accent) 65%,transparent);pointer-events:none}
-.motion-atmosphere{position:fixed;inset:76px 0 0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.42}
+.motion-atmosphere{position:fixed;inset:76px 0 0;z-index:0;overflow:hidden;pointer-events:none;opacity:.42}
 .atmosphere-orbit{position:absolute;width:min(42vw,560px);aspect-ratio:1;border:1px solid #52525b20;border-radius:50%;will-change:transform}
 .atmosphere-orbit-a{left:-24vw;top:12vh;box-shadow:0 0 0 42px #ffffff03,0 0 0 84px #ffffff02;animation:atmosphere-drift 38s ease-in-out infinite alternate}
 .atmosphere-orbit-b{right:-28vw;top:48vh;width:min(48vw,650px);border-style:dashed;animation:atmosphere-drift-reverse 46s ease-in-out infinite alternate}
