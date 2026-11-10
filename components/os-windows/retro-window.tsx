@@ -21,7 +21,7 @@ export function RetroWindow({ title, children, className = "", index = 0, cascad
 
   if (closed) return <div className="window-closed"><span>{title}</span><button type="button" onClick={() => setClosed(false)}>Restore window ↗</button></div>;
 
-  const style = cascade ? ({ "--window-index": index } as CSSProperties) : undefined;
+  const style = cascade ? ({ left: (5 + index * 2.2) + "%", top: (index * 23) + "px", zIndex: 10 + index } as CSSProperties) : undefined;
   return (
     <motion.section
       className={"retro-window " + (minimized ? "is-minimized " : "") + (maximized ? "is-maximized " : "") + className}
