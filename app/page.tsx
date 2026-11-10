@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/reveal";
 import { Hero } from "@/components/hero";
+import { VisualChapters } from "@/components/visual-chapters";
 import { ProjectCard } from "@/components/project-card";
 import { ContactForm } from "@/components/contact-form";
 import { projects, toolkit, links } from "@/data/portfolio";
@@ -8,6 +9,7 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <VisualChapters />
 
       <section className="story-chapter" id="philosophy" aria-labelledby="story-title">
         <div className="story-meta"><span>CHAPTER 01</span><span>THE WHY / THE HOW</span></div>
