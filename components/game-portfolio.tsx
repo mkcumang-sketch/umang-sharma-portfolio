@@ -15,6 +15,7 @@ export function GamePortfolio() {
   const [activeZone, setActiveZone] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const closeProjectButton = useRef<HTMLButtonElement>(null);
+  const projectDialogRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!selectedProject) return;
@@ -23,7 +24,27 @@ export function GamePortfolio() {
     document.body.style.overflow = "hidden";
     closeProjectButton.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedProject(null);
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const dialog = projectDialogRef.current;
+      if (!dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
@@ -84,7 +105,7 @@ export function GamePortfolio() {
       <span className="quest-kicker">MAIN QUEST</span><strong>Explore Umang's world</strong><span className="quest-progress"><i style={{ width: ((activeZone + 1) / zones.length * 100) + "%" }}/></span><small>ZONE {activeZone + 1} / {zones.length}</small>
     </aside>
 
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
       <section className="game-zone spawn-zone" id="spawn">
         <div className="world-sky" aria-hidden="true"><span className="sky-star star-one"/><span className="sky-star star-two"/><span className="sky-star star-three"/><span className="sky-moon"/></div>
         <div className="spawn-copy">
@@ -145,7 +166,7 @@ export function GamePortfolio() {
     <div className="game-controls"><kbd>W</kbd><kbd>S</kbd><span>MOVE ZONE</span><kbd>↵</kbd><span>GO TO ZONE</span></div>
 
     {selectedProject && <div className="project-modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedProject(null); }}>
-      <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description">
+      <section ref={projectDialogRef} className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description">
         <div className="project-modal-topline"><span>PROJECT ISLAND / {selectedProject.number}</span><button ref={closeProjectButton} type="button" onClick={() => setSelectedProject(null)} aria-label="Close project details">CLOSE ×</button></div>
         <p className="game-eyebrow">{selectedProject.category}</p>
         <h2 id="project-modal-title">{selectedProject.name}</h2>
