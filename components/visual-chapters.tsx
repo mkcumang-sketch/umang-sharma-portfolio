@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import type { CSSProperties } from "react";
 
 const chapters = [
   { id: "pixels", no: "01", label: "PIXELS / THE DETAILS", title: <>It starts with<br /><em>one pixel.</em></>, copy: "Small decisions create the feeling of a product. Spacing, rhythm, hierarchy and the moments between clicks all add up to an experience people can understand.", theme: "paper" },
@@ -13,7 +14,7 @@ const chapters = [
 ];
 
 function PixelArtwork() {
-  return <div className="art-pixels" aria-hidden="true"><div className="pixel-grid">{Array.from({ length: 64 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div><span className="art-coordinate">X 014 / Y 028</span><b>U<span>.</span></b></div>;
+  return <div className="art-pixels" aria-hidden="true"><div className="pixel-grid">{Array.from({ length: 64 }, (_, i) => <i key={i} style={{ "--i": i } as CSSProperties} />)}</div><span className="art-coordinate">X 014 / Y 028</span><b>U<span>.</span></b></div>;
 }
 function BrainArtwork() {
   return <svg className="art-brain" viewBox="0 0 520 420" role="img" aria-label="Abstract neural network diagram"><circle cx="260" cy="210" r="165" fill="none" stroke="#b9a28b" strokeOpacity=".14"/>{Array.from({length:22},(_,i)=>{const a=i*2.399,r=42+(i%5)*25,x=260+Math.cos(a)*r,y=210+Math.sin(a)*r;return <g key={i}><line x1="260" y1="210" x2={x} y2={y} stroke="#b9a28b" strokeOpacity=".5"/><circle cx={x} cy={y} r={i%4===0?7:4} fill={i%4===0?"#e7c9a8":"#8f9690"}/></g>})}<circle cx="260" cy="210" r="22" fill="#e7c9a8"/><circle cx="260" cy="210" r="36" fill="none" stroke="#e7c9a8" strokeOpacity=".5"/></svg>;
