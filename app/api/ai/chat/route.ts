@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const clientKey = forwardedFor || request.headers.get("x-real-ip") || "unknown";
   const now = Date.now();
-  const bucket = rateBuckets.get(clientKey);
+  if (rateBuckets.size > 1000) {\n    for (const [key, value] of rateBuckets) if (value.resetAt <= now) rateBuckets.delete(key);\n  }\n  const bucket = rateBuckets.get(clientKey);
   if (bucket && bucket.resetAt > now && bucket.count >= RATE_LIMIT) {
     return NextResponse.json({ error: "Too many questions from this network. Please wait a few minutes and try again." }, { status: 429 });
   }
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     } | null;
 
     if (!upstream.ok) {
-      const detail = typeof payload?.error === "string" ? payload.error : payload?.error?.message;
+      const providerError = payload?.error;\n      const detail = typeof providerError === "string" ? providerError : providerError?.message;
       return NextResponse.json({ error: detail || `LLM provider returned HTTP ${upstream.status}.` }, { status: 502 });
     }
 
