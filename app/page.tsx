@@ -21,8 +21,8 @@ export default function HomePage() {
       <NarrativeSections/>
       <WindowCascade/>
       <section className="ai-sandbox-section section-shell" id="ai-sandbox" aria-labelledby="ai-sandbox-title">
-        <div className="section-kicker"><span>07 / INTERACTIVE AI CENTER</span><span>SIMULATION MODE / NO LIVE API</span></div>
-        <div className="ai-sandbox-heading"><div><p className="terminal-eyebrow">C:/UMANG.DEV/AI</p><h2 id="ai-sandbox-title">Try the systems.<br/><em>Explore the logic.</em></h2></div><p>Two hands-on portfolio demos. They show interaction patterns and architecture honestly; neither is connected to a live voice service, LLM, WebSocket or MCP server.</p></div>
+        <div className="section-kicker"><span>07 / INTERACTIVE AI CENTER</span><span>LIVE CONNECTORS / ENV-DEPENDENT</span></div>
+        <div className="ai-sandbox-heading"><div><p className="terminal-eyebrow">C:/UMANG.DEV/AI</p><h2 id="ai-sandbox-title">Try the systems.<br/><em>Explore the logic.</em></h2></div><p>Connect to the portfolio knowledge model or request a real Sarvam voice-agent demo call. Provider credentials stay server-side; live features activate when the deployment environment is configured.</p></div>
         <div className="ai-sandbox-grid"><VoiceAgent/><LlmTerminal/></div>
       </section>
       <ProjectsArcade/>
