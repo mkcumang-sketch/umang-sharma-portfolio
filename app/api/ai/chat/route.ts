@@ -12,7 +12,20 @@ Keep answers concise, useful, and professional. Hinglish is welcome when the vis
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT = 12;
+
 export async function POST(request: NextRequest) {
+  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const clientKey = forwardedFor || request.headers.get("x-real-ip") || "unknown";
+  const now = Date.now();
+  const bucket = rateBuckets.get(clientKey);
+  if (bucket && bucket.resetAt > now && bucket.count >= RATE_LIMIT) {
+    return NextResponse.json({ error: "Too many questions from this network. Please wait a few minutes and try again." }, { status: 429 });
+  }
+  if (!bucket || bucket.resetAt <= now) rateBuckets.set(clientKey, { count: 1, resetAt: now + RATE_WINDOW_MS });
+  else bucket.count += 1;
   let body: { messages?: unknown };
   try {
     body = await request.json();
