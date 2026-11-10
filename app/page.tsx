@@ -41,20 +41,33 @@ export default function HomePage() {
         <div className="projects-grid">{projects.map((project, index) => <ProjectCard key={project.number} project={project} index={index} />)}</div>
       </section>
 
+      <section className="systems-section" id="systems" aria-labelledby="systems-title">
+        <div className="systems-inner">
+          <div className="section-kicker"><span>03</span> INTELLIGENCE / AUTOMATION</div>
+          <div className="systems-heading"><h2 id="systems-title">From a prompt<br />to a <em>working system.</em></h2><p>Exploring practical AI interfaces that connect conversation, context and action. These are build areas—not claims of a hosted public service.</p></div>
+          <div className="systems-list">
+            <article className="system-row"><span className="system-number">01</span><div><p className="system-label">VOICE / REAL-TIME</p><h3>Voice agents</h3><p>Streaming audio, conversational turn-taking and calling workflows designed around clear hand-offs and useful outcomes.</p></div><span className="system-mark">↗</span></article>
+            <article className="system-row"><span className="system-number">02</span><div><p className="system-label">CONTEXT / KNOWLEDGE</p><h3>LLM assistants</h3><p>Local models and API gateways paired with contextual retrieval, structured prompts and tool-aware interactions.</p></div><span className="system-mark">↗</span></article>
+            <article className="system-row"><span className="system-number">03</span><div><p className="system-label">ORCHESTRATION / ACTION</p><h3>Agent workflows</h3><p>Connecting APIs, webhooks and MCP-style tools so repeatable business tasks can move between systems.</p></div><span className="system-mark">↗</span></article>
+          </div>
+          <div className="systems-foot"><span>DESIGN FOR THE HUMAN IN THE LOOP</span><a href="#contact">Discuss an automation <b>↗</b></a></div>
+        </div>
+      </section>
+
       <section className="section toolkit-section" id="toolkit">
-        <div className="section-kicker"><span>03</span> TECHNOLOGY / TOOLKIT</div>
+        <div className="section-kicker"><span>04</span> TECHNOLOGY / TOOLKIT</div>
         <div className="toolkit-heading"><Reveal><h2>The tools are a means.<br /><em>The system is the craft.</em></h2></Reveal><Reveal delay={0.1}><p>A practical set of tools for designing, building and connecting digital products. The right stack depends on the problem being solved.</p></Reveal></div>
         <div className="toolkit-grid">{toolkit.map((item, index) => <Reveal key={item.name} delay={(index % 3) * 0.04}><article className="toolkit-card"><span className="toolkit-index">0{index + 1}</span><div><small>{item.group}</small><h3>{item.name}</h3><p>{item.note}</p></div><span className="toolkit-arrow">↗</span></article></Reveal>)}</div>
       </section>
 
       <section className="manifesto-section">
-        <div className="section-kicker"><span>04</span> A WORKING PRINCIPLE</div>
+        <div className="section-kicker"><span>05</span> A WORKING PRINCIPLE</div>
         <Reveal><blockquote>“I don’t build for the sake of the stack. I build to make the <em>next action clearer.</em>”</blockquote></Reveal>
         <span className="manifesto-signature">UMANG SHARMA <i /> TRUV TECH &amp; CONSULTANCY</span>
       </section>
 
       <section className="section contact-section" id="contact">
-        <div className="section-kicker"><span>05</span> START A CONVERSATION</div>
+        <div className="section-kicker"><span>06</span> START A CONVERSATION</div>
         <div className="contact-heading"><Reveal><h2>Have a problem<br />worth <em>building for?</em></h2></Reveal><Reveal delay={0.1}><p>Share what you’re trying to improve, launch or connect. A useful first conversation starts with the problem — not a predefined tech stack.</p><a className="email-direct" href={`mailto:${links.email}`}>{links.email}<span>↗</span></a><a className="phone-direct" href={`tel:${links.phone}`}>+91 8960082060</a></Reveal></div>
         <div className="contact-bottom"><ContactForm /><aside className="contact-note"><span>DIRECT / CONTACT</span><p>TRUV TECH &amp; CONSULTANCY</p><strong>Your Vision.<br />Our Expertise.</strong><a href={links.github} target="_blank" rel="noreferrer">GitHub profile ↗</a></aside></div>
       </section>
