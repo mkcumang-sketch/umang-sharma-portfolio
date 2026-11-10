@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { FormEvent } from "react";
 import { useReducedMotion } from "framer-motion";
 import { RetroWindow } from "@/components/os-windows/retro-window";
 
@@ -58,7 +59,7 @@ export function VoiceAgent() {
   const current = scenarios[scenario];
 
   const chooseScenario = (index: number) => { setScenario(index); setTurn(0); };
-  const requestCall = async (event: React.FormEvent<HTMLFormElement>) => {
+  const requestCall = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!phone.trim() || !consent || submitting) return;
     setSubmitting(true);
