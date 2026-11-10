@@ -1,64 +1,32 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
-import type { PointerEvent } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { useExperienceMode } from "@/components/experience-mode";
 
 export function Hero() {
-  const visualRef = useRef<HTMLDivElement>(null);
+  const { mode, setMode } = useExperienceMode();
   const reduceMotion = useReducedMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const smoothX = useSpring(pointerX, { stiffness: 110, damping: 20, mass: 0.5 });
-  const smoothY = useSpring(pointerY, { stiffness: 110, damping: 20, mass: 0.5 });
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [7, -7]);
-
-  const movePointer = (event: PointerEvent<HTMLDivElement>) => {
-    if (reduceMotion || event.pointerType !== "mouse") return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const resetPointer = () => {
-    pointerX.set(0);
-    pointerY.set(0);
-  };
-
-  return (
-    <section className="hero-section" id="home">
-      <div className="hero-gridline" aria-hidden="true" />
-      <div className="hero-copy">
-        <motion.div className="availability" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-          <span className="availability-dot" />
-          AVAILABLE FOR AMBITIOUS BUILDS &amp; PRODUCT SPRINTS
-        </motion.div>
-        <motion.p className="hero-index" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>INDEPENDENT BUILDER <span>—</span> TRUV TECH &amp; CONSULTANCY</motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
-          Ideas deserve to become <em>real systems</em><span className="hero-period">.</span>
-        </motion.h1>
-        <motion.p className="hero-description" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.24 }}>
-          I’m Umang Sharma. I turn product ideas and operational problems into useful digital experiences, AI workflows and business systems—with clarity from first sketch to implementation.
-        </motion.p>
-        <motion.div className="hero-actions" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.34 }}>
-          <a className="button-primary" href="#work">Explore selected work <span>↘</span></a>
-          <a className="text-link" href="#contact">Start a conversation <span>↗</span></a>
-        </motion.div>
-        <div className="hero-meta"><span>AI-ASSISTED EXECUTION</span><i /><span>PRODUCT THINKING</span><i /><span>BUSINESS SYSTEMS</span></div>
+  const designMode = mode === "design";
+  return <section className="retro-hero section-shell" id="hero" aria-labelledby="hero-title">
+    <div className="hero-terminal-top"><span>[ HELLO_WORLD.SYS ]</span><span>UMANGOS / BUILD 2026.11</span></div>
+    <div className="hero-main-grid">
+      <div className="hero-main-copy">
+        <p className="terminal-eyebrow">C:/UMANG.DEV/STARTUP_SEQUENCE</p>
+        <motion.h1 id="hero-title" initial={reduceMotion ? false : { opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>Turning Prompts,<br/>Code &amp; Pixels into<br/><em>Autonomous Digital Systems.</em></motion.h1>
+        <p className="hero-lede">{designMode ? "A design-led builder shaping expressive interfaces, product stories and visual systems that make complex technology feel clear." : "Vibe coder, AI systems builder, and design technologist crafting high-speed web platforms, voice agents, and operational workflows."}</p>
+        <div className="hero-actions"><a className="terminal-button" href="#projects">Explore selected work <b>↘</b></a><a className="hero-text-link" href="#contact">Start a conversation ↗</a></div>
+        <div className="hero-system-line"><span className="system-online-dot"/><span>{designMode ? "DESIGN SYSTEM / VISUAL MODE" : "SYSTEMS & AI / BUILD MODE"}</span><span className="hero-divider"/> <span>INDIA / REMOTE</span></div>
       </div>
-
-      <div className="hero-visual-wrap" ref={visualRef} onPointerMove={movePointer} onPointerLeave={resetPointer} aria-label="Interactive abstract product system illustration">
-        <div className="visual-caption top-caption"><span>OBJECT / 01</span><span>FORM / FUNCTION</span></div>
-        <motion.div className="hero-orbit-object" style={reduceMotion ? undefined : { rotateX, rotateY }}>
-          <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" />
-          <div className="orbit-core"><div className="core-inner">U<span>.</span></div></div>
-          <span className="orbit-node node-a" /><span className="orbit-node node-b" /><span className="orbit-node node-c" />
-        </motion.div>
-        <div className="visual-caption bottom-caption"><span>IDEA → SYSTEM → PRODUCT</span><span>A SYSTEM IN MOTION</span></div>
-        <div className="visual-coordinate">INDIA / REMOTE</div>
+      <div className="hero-console">
+        <div className="console-header"><span>UMANGOS / MODE SELECTOR</span><span>SYS.001</span></div>
+        <div className="mode-switcher" role="group" aria-label="Choose portfolio experience mode">
+          <button type="button" aria-pressed={!designMode} className={!designMode ? "is-active" : ""} onClick={() => setMode("systems")}>[ Systems &amp; AI Mode ]</button>
+          <button type="button" aria-pressed={designMode} className={designMode ? "is-active" : ""} onClick={() => setMode("design")}>[ Design &amp; Vibe Mode ]</button>
+        </div>
+        <div className="console-visual" aria-hidden="true"><div className="console-grid"/><div className="console-orbit console-orbit-a"/><div className="console-orbit console-orbit-b"/><div className="console-core">U<span>.</span></div><div className="console-crosshair">+</div><span className="console-coord coord-a">X:014 / Y:028</span><span className="console-coord coord-b">CORE / ONLINE</span></div>
+        <div className="console-stats"><div><span>MODE</span><b>{designMode ? "DESIGN" : "SYSTEMS"}</b></div><div><span>FOCUS</span><b>{designMode ? "FORM / FEEL" : "AI / AUTOMATION"}</b></div><div><span>STATUS</span><b className="status-green">READY</b></div></div>
       </div>
-      <div className="hero-bottomline"><span>SCROLL TO EXPLORE</span><span className="bottom-line" /><span>01 / 05</span></div>
-    </section>
-  );
+    </div>
+    <div className="hero-bottomline"><span>SCROLL TO EXPLORE</span><span className="hero-progress-line"/><span>01 / 11</span></div>
+  </section>;
 }
