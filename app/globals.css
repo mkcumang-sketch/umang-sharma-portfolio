@@ -120,3 +120,29 @@
 }
 @media(max-width:420px){.chapter-top span:last-child{max-width:58%;text-align:right}.chapter-art{min-height:260px}.art-pixels{min-height:260px}.pixel-grid{width:72%;gap:3px}}
 @media(prefers-reduced-motion:reduce){.pixel-grid i,.wave-bars i{animation:none!important}}
+
+.chapter-art-concept{background:#dedbd2}
+.art-concept{width:88%;height:340px;position:relative;display:grid;place-items:center}
+.concept-orbit{width:230px;height:230px;border:1px solid #9a8f80;border-radius:50%;position:absolute;box-shadow:0 0 0 34px #a99c8b16,0 0 0 68px #a99c8b12}
+.concept-card{position:absolute;width:42%;height:48%;padding:18px;background:#f0eee8;box-shadow:12px 16px 30px #0002;display:flex;flex-direction:column;justify-content:space-between}
+.concept-card small{font:8px var(--mono);letter-spacing:.12em;color:#8c8175}
+.concept-card b{font-size:clamp(18px,2.5vw,29px);line-height:1.02;letter-spacing:-.06em}
+.concept-card-a{left:2%;top:8%;transform:rotate(-8deg)}
+.concept-card-b{right:2%;bottom:8%;transform:rotate(7deg);background:#a66f4d;color:#f5eee6}
+.concept-card-b small{color:#ead1bc}
+.concept-cross{position:absolute;font-size:45px;color:#70665a;font-weight:200}
+.chapter-art-beauty{background:#d2c6b5}
+.art-beauty{width:90%;height:350px;position:relative;display:grid;place-items:center;overflow:hidden}
+.beauty-circle{position:absolute;width:250px;height:250px;border:1px solid #9d816b;border-radius:50%;box-shadow:0 0 0 25px #a1846b16,0 0 0 55px #a1846b10}
+.beauty-arch{position:absolute;width:170px;height:235px;border:1px solid #92735d;border-radius:100px 100px 0 0;bottom:0;background:linear-gradient(180deg,#a46f4b33,#a46f4b00)}
+.art-beauty>b{position:relative;text-align:center;font-size:clamp(38px,6vw,70px);line-height:.8;letter-spacing:-.1em;color:#272421}
+.art-beauty>b em{font-style:normal;color:#a46f4b;font-size:.7em}
+.art-beauty>span{position:absolute;bottom:5px;font:8px var(--mono);letter-spacing:.14em;color:#716457}
+.chapter-art-tetris{background:#202023}
+.art-tetris{width:88%;height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.tetris-grid{width:220px;height:220px;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:5px;transform:rotate(-8deg)}
+.tetris-grid i{border:1px solid #77756f33;background:#ffffff08}
+.tetris-grid i.filled{background:#a66f4d;border:1px solid #d2a486;box-shadow:inset -5px -5px 0 #744d38}
+.tetris-grid i.filled:nth-child(3n){background:#8a9587;border-color:#b4c0ae;box-shadow:inset -5px -5px 0 #566052}
+.art-tetris>span{font:8px var(--mono);letter-spacing:.12em;color:#aaa69d;text-align:center}
+@media(max-width:760px){.art-concept,.art-beauty,.art-tetris{height:280px}.concept-orbit{width:190px;height:190px}.concept-card{padding:14px}.tetris-grid{width:190px;height:190px}}
