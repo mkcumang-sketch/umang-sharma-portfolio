@@ -6,7 +6,7 @@ export type Project = {
   category: string;
   description: string;
   status: ProjectStatus;
-  visual: "ledger" | "taskflow" | "property" | "crm" | "brand" | "commerce";
+  visual: "ledger" | "commerce" | "automation" | "taskflow" | "property" | "crm" | "brand";
   stack: string[];
   repository?: string;
   details: string;
