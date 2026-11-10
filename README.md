@@ -1,14 +1,14 @@
 # Umang Sharma — Technical Product Builder
 
-A responsive, editorial personal portfolio built with Next.js, React, TypeScript, Tailwind CSS and Framer Motion.
+An immersive, responsive 3D game-world portfolio built with Next.js, React, TypeScript, Tailwind CSS and Framer Motion.
 
 ## Experience
-- Swiss-minimalist graphite / bone palette with restrained monochrome motion
-- Interactive cursor-responsive hero sculpture built with CSS 3D transforms
-- Staggered scroll reveals and hover tilt with reduced-motion support
-- Expandable project case notes with honest project-stage labels
-- Responsive navigation and `Ctrl/Cmd + K` quick navigation
-- Contact form that prepares an email draft; it does not pretend to submit to a backend
+- 3D floating-island spawn world with a game-style player HUD and quest progress
+- Five explorable zones: Spawn Point, Player Profile, Project Islands, Skill Inventory and Final Portal
+- Keyboard navigation with W/S or arrow keys, Enter to jump to the selected zone, plus touch-friendly mobile navigation
+- CSS-built 3D environments and portal effects; no heavy WebGL engine required
+- Project stages and repository links remain grounded in the portfolio source data
+- Reduced-motion and responsive mobile layouts
 
 ## Projects
 Project statuses reflect the supplied portfolio information. Public repository links are included only where verified. No unverified demo URLs, customer metrics, or testimonials are presented.
@@ -44,16 +44,6 @@ The contact form opens a pre-filled `mailto:` draft. Configure a real form endpo
 - Tagline: Your Vision. Our Expertise.
 
 
-## Live AI Sandbox connectors
+## Optional AI text terminal
 
-The AI Sandbox uses server-side API routes. It does not expose provider credentials to the browser.
-
-### LLM (Ollama / LiteLLM / OpenAI-compatible)
-
-Set `LLM_BASE_URL`, `LLM_MODEL`, and (when required) `LLM_API_KEY` in the deployment environment. The base URL should include the API prefix, for example `https://your-gateway.example/v1`. A local Ollama example is `http://127.0.0.1:11434/v1`; that local address is only reachable from the same machine, not from Vercel. For production, configure a private/reachable HTTPS gateway.
-
-### Sarvam outbound voice calls
-
-Set `SARVAM_API_KEY`, `SARVAM_ORG_ID`, `SARVAM_WORKSPACE_ID`, `SARVAM_APP_ID` (or the legacy `SARVAM_AGENT_ID` name), `SARVAM_APP_VERSION`, `SARVAM_CONNECTION_ID`, and `SARVAM_AGENT_PHONE_NUMBER`. Also set `SARVAM_ALLOWED_TEST_NUMBERS` to a comma-separated allowlist of E.164 phone numbers. The allowlist is mandatory: it prevents anonymous visitors from triggering calls to arbitrary numbers and incurring telephony charges.
-
-The voice demo sends an outbound call request to Sarvam's Voice Agents API. An accepted request returns an attempt ID; it does not mean the call was answered. Configure Sarvam call-result webhooks separately if you need post-call transcripts and dispositions. Never commit real keys or phone numbers.
+The Skill Inventory zone includes an optional text-only AI terminal. It uses the server-side `/api/ai/chat` route and does not expose provider credentials to the browser. Set `LLM_BASE_URL`, `LLM_MODEL`, and (when required) `LLM_API_KEY` in the deployment environment. The base URL should include the API prefix, for example `https://your-gateway.example/v1`. A local Ollama address such as `http://127.0.0.1:11434/v1` is only reachable from the same machine, not from Vercel. For production, configure a private/reachable HTTPS gateway. No voice agent, microphone feature or outbound calling is included.

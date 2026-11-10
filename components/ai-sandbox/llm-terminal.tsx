@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { RetroWindow } from "@/components/os-windows/retro-window";
 
-const quickPrompts = ["What does Umang build?", "Explain the voice agent architecture.", "What is TRUV LedgerOS?", "How does the MCP demo work?"];
+const quickPrompts = ["What does Umang build?", "How do Umang’s systems connect?", "What is TRUV LedgerOS?", "How does the MCP demo work?"];
 type Exchange = { question: string; answer: string };
 
 export function LlmTerminal() {
@@ -73,7 +73,7 @@ export function LlmTerminal() {
   };
 
   return <RetroWindow title="C:/UMANG.DEV/AI/LLM_TERMINAL.EXE" className="sandbox-window" accent="amber">
-    <div className="sandbox-label"><span className="system-chip system-chip-amber">LIVE LLM KNOWLEDGE ENGINE</span><span className="simulation-dot">OLLAMA / LITELLM API</span></div>
+    <div className="sandbox-label"><span className="system-chip system-chip-amber">AI KNOWLEDGE TERMINAL / TEXT ONLY</span><span className="simulation-dot">OPTIONAL CONNECTOR / CONFIG REQUIRED</span></div>
     <div className="terminal-window-output" ref={outputRef} aria-live="polite">
       <p className="terminal-welcome">UMANGOS KNOWLEDGE SHELL [v2.0.0]<br/>Ask about skills, systems or projects. Requests are routed through the server-side LLM gateway.</p>
       {history.map((item, index) => <div className="terminal-exchange" key={index}><p className="terminal-user"><span>visitor@umang.dev $</span> {item.question}</p>{index === history.length - 1 && <><p className="terminal-tool">[{toolLabel}]</p><p className="terminal-answer">{visible}{typing && <i className="terminal-cursor"/>}</p></>}</div>)}
