@@ -63,7 +63,7 @@ export function VisualChapters() {
           <span className="chapter-overline">UMANG SHARMA / FIELD NOTES</span>
           <h2 id={"chapter-title-"+chapter.id}>{chapter.title}</h2>
           <p>{chapter.copy}</p>
-          <span className="chapter-count">{String(index+1).padStart(2,"0")} <i/> 07</span>
+          <span className="chapter-count">{String(index+1).padStart(2,"0")} <i/> 10</span>
         </motion.div>
         <motion.div className={"chapter-art chapter-art-"+chapter.id} initial={reduceMotion?false:{opacity:0,scale:.92}} whileInView={{opacity:1,scale:1}} viewport={{once:true,amount:.25}} transition={{duration:.85,delay:.08,ease:[.22,1,.36,1]}}>
           <ChapterArtwork id={chapter.id}/>
