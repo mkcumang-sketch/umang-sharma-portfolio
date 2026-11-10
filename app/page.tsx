@@ -9,6 +9,16 @@ export default function HomePage() {
     <main>
       <Hero />
 
+      <section className="story-chapter" id="philosophy" aria-labelledby="story-title">
+        <div className="story-meta"><span>CHAPTER 01</span><span>THE WHY / THE HOW</span></div>
+        <div className="story-body">
+          <p className="story-eyebrow">A builder’s point of view</p>
+          <h2 id="story-title">Form follows function.<br /><em>Clarity makes it matter.</em></h2>
+          <p className="story-lede">Good technology should feel less like another tool to manage—and more like the obvious next step.</p>
+        </div>
+        <div className="story-foot"><span>IDEA → SYSTEM → PRODUCT</span><a href="#work">Continue into the work <b>↓</b></a></div>
+      </section>
+
       <section className="section about-section" id="about">
         <div className="section-kicker"><span>01</span> THE VIBE CODING ERA</div>
         <div className="about-intro">
