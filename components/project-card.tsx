@@ -46,7 +46,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     y.set((event.clientY - rect.top) / rect.height - 0.5);
   };
 
-  const statusClass = project.status === "Live Demo" ? "status-live" : project.status === "Client Project" ? "status-client" : project.status === "Capability" ? "status-capability" : "status-build";
+  const statusClass = project.status === "Live Demo" ? "status-live" : project.status === "Client Project" ? "status-client" : "status-build";
 
   return (
     <motion.article className="project-card" style={reduceMotion ? undefined : { rotateX, rotateY }} onPointerMove={onMove} onPointerLeave={() => { x.set(0); y.set(0); }} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.58, delay: (index % 2) * 0.08 }}>
