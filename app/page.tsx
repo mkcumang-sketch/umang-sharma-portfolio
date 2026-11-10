@@ -1,4 +1,5 @@
 import { ExperienceModeProvider } from "@/components/experience-mode";
+import { MotionAtmosphere } from "@/components/motion-atmosphere";
 import { Hero } from "@/components/hero";
 import { CreatorCard, NarrativeSections } from "@/components/scrollytelling/narrative-sections";
 import { WindowCascade } from "@/components/os-windows/window-cascade";
@@ -12,6 +13,7 @@ import { links } from "@/data/portfolio";
 
 export default function HomePage() {
   return <ExperienceModeProvider>
+    <MotionAtmosphere/>
     <SectionRail/>
     <main id="main-content">
       <Hero/>
@@ -29,7 +31,7 @@ export default function HomePage() {
         <div className="section-kicker"><span>10 / OPEN A NEW SESSION</span><span>ENDPOINT / CONTACT</span></div>
         <div className="contact-dialog">
           <div className="contact-dialog-bar"><span><i/> C:/UMANG.DEV/CONTACT</span><span>×</span></div>
-          <div className="contact-dialog-body"><p className="terminal-eyebrow">CONNECTION REQUEST / READY</p><h2 id="contact-title">Good ideas deserve great execution. Let’s build your next system, one pixel and prompt at a time.</h2><p className="contact-dialog-copy">Tell me what you want to improve, launch or connect. We can start with the problem and shape the right system around it.</p><div className="contact-actions"><a className="terminal-button" href={"mailto:" + links.email}>Email Umang <b>↗</b></a><a className="contact-link" href={links.github} target="_blank" rel="noreferrer">GitHub / mkcumang-sketch ↗</a></div><div className="contact-endpoints"><span>MAILTO://{links.email}</span><span>GITHUB://MKCUMANG-SKETCH</span></div></div>
+          <div className="contact-dialog-body"><p className="terminal-eyebrow">CONNECTION REQUEST / READY</p><h2 id="contact-title">Good ideas deserve great execution. Let’s build your next system, one pixel and prompt at a time.</h2><p className="contact-dialog-copy">Tell me what you want to improve, launch or connect. We can start with the problem and shape the right system around it.</p><div className="contact-actions"><a className="terminal-button" href={"mailto:" + links.email}>Email Umang <b>↗</b></a><div className="contact-social-links"><a className="contact-link" href={links.github} target="_blank" rel="noreferrer">GitHub / mkcumang-sketch ↗</a><a className="contact-link" href={links.linkedin} target="_blank" rel="me noreferrer">LinkedIn / Umang Sharma ↗</a><a className="contact-link" href={links.instagram} target="_blank" rel="me noreferrer">Instagram / TRUV Official ↗</a></div></div><div className="contact-endpoints"><span>MAILTO://{links.email}</span><span>GITHUB://MKCUMANG-SKETCH</span></div></div>
         </div>
       </section>
     </main>
