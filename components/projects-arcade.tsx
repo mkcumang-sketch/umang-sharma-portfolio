@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { projects } from "@/data/portfolio";
 
@@ -38,7 +39,7 @@ export function ProjectsArcade() {
     setSelected(featured[next]);
   };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     const target = event.target as HTMLElement;
     if (target.closest("input, textarea, select, [contenteditable=true]")) return;
     if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") { event.preventDefault(); move(1); }
