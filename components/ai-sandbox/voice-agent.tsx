@@ -83,7 +83,7 @@ export function VoiceAgent() {
   };
 
   return <RetroWindow title="C:/UMANG.DEV/AI/VOICE_AGENT.EXE" className="sandbox-window" accent="green">
-    <div className="sandbox-label"><span className="system-chip">SARVAM VOICE AGENT</span><span className="simulation-dot">LIVE CALL / ALLOWLISTED</span></div>
+    <div className="sandbox-label"><span className="system-chip">SARVAM VOICE AGENT</span><span className="simulation-dot">LIVE CALL / CONFIG REQUIRED</span></div>
     <div className="voice-scenario-tabs" role="tablist" aria-label="Voice agent conversation previews">{scenarios.map((item, index) => <button key={item.label} type="button" role="tab" aria-selected={scenario === index} className={scenario === index ? "is-active" : ""} onClick={() => chooseScenario(index)}>{item.label}</button>)}</div>
     <h3 className="voice-scenario-title">{current.title}</h3>
     <div className="voice-wave-panel"><AudioCanvas active={false}/><div className="voice-wave-footer"><span>VOICE RUNTIME / SARVAM</span><span>PREVIEW ONLY</span></div></div>
