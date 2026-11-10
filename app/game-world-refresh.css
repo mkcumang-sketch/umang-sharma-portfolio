@@ -38,6 +38,7 @@
 .project-modal-actions>a{color:var(--game-gold);font:9px var(--mono);letter-spacing:.08em}
 .project-modal-actions>span{color:#9da895;font:9px var(--mono)}
 @media(max-width:760px){
+  .game-hud{backdrop-filter:none}
   .service-grid{grid-template-columns:1fr}
   .service-card{min-height:112px;padding:17px}
   .company-signature{margin-bottom:25px}
