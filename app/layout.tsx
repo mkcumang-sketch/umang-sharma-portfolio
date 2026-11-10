@@ -4,12 +4,12 @@ import "./retro-experience.css";
 import "./game-world.css";
 
 export const metadata: Metadata = {
-  title: "Umang Sharma — AI Systems & Design Technologist",
+  title: "Umang Sharma — Explore My 3D Portfolio World",
   description: "Umang Sharma builds AI-powered products, business systems, automation workflows and immersive digital experiences. Founder of TRUV TECH & CONSULTANCY.",
   applicationName: "UmangOS — Umang Sharma Portfolio",
   metadataBase: new URL("https://umang-sharma-portfolio.vercel.app"),
-  openGraph: { title: "Umang Sharma — AI Systems & Design Technologist", description: "Turning prompts, code and pixels into autonomous digital systems.", type: "website", url: "https://umang-sharma-portfolio.vercel.app" },
-  twitter: { card: "summary_large_image", title: "Umang Sharma — AI Systems & Design Technologist", description: "Turning prompts, code and pixels into autonomous digital systems." },
+  openGraph: { title: "Umang Sharma — Explore My 3D Portfolio World", description: "Turning prompts, code and pixels into autonomous digital systems.", type: "website", url: "https://umang-sharma-portfolio.vercel.app" },
+  twitter: { card: "summary_large_image", title: "Umang Sharma — Explore My 3D Portfolio World", description: "Turning prompts, code and pixels into autonomous digital systems." },
 };
 
 export const viewport: Viewport = { themeColor: "#09090b", colorScheme: "dark" };
