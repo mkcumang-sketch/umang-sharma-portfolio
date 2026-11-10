@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
   const apiKey = process.env.SARVAM_API_KEY?.trim();
   const orgId = process.env.SARVAM_ORG_ID?.trim();
   const workspaceId = process.env.SARVAM_WORKSPACE_ID?.trim();
-  const appId = process.env.SARVAM_APP_ID?.trim();
+  const appId = process.env.SARVAM_APP_ID?.trim() || process.env.SARVAM_AGENT_ID?.trim();
   const connectionId = process.env.SARVAM_CONNECTION_ID?.trim();
   const agentPhone = process.env.SARVAM_AGENT_PHONE_NUMBER?.trim();
   const appVersion = Number(process.env.SARVAM_APP_VERSION || "1");
