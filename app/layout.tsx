@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./immersive-portfolio.css";
 import "./kinetic-depth.css";
+import "../components/world/immersive-world.css";
 
 export const metadata: Metadata = {
   title: "Umang Sharma | Immersive Portfolio — Systems Builder & AI Solutions Architect",
