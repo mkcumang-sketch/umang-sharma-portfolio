@@ -1,5 +1,5 @@
-import { GamePortfolio } from "@/components/game-portfolio";
+import { ImmersivePortfolio } from "@/components/immersive-portfolio";
 
 export default function HomePage() {
-  return <GamePortfolio />;
+  return <ImmersivePortfolio />;
 }
