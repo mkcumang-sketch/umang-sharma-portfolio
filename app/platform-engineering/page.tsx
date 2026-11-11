@@ -58,7 +58,25 @@ const projects = [
     impact: "Demonstrates server-side application delivery, relational data workflows and deployment planning across managed hosting and VPS environments."
   },
   {
-    number: "06", name: "TRUVAcademy", label: "Education administration system", status: "REPOSITORY / IMPLEMENTATION",
+    number: "06", name: "TRUV Tech Solutions / Official Website", label: "Corporate digital platform", status: "IN DEVELOPMENT",
+    stack: "Implementation stack not verified in a public repository",
+    problem: "TRUV Tech & Consultancy needs a clear corporate presence for its technology, automation and consulting services.",
+    work: ["Resume describes the corporate platform as designed and deployed.", "The current portfolio project record marks the official website as In Development.", "Kept the current project status and did not invent framework, hosting or deployment details."],
+    evidence: "No public source repository was verified for this project. The resume's deployed wording and the current portfolio's In Development status are both retained as context; current status is not upgraded.",
+    link: "", linkLabel: "",
+    impact: "Demonstrates corporate product positioning and digital delivery work. No implementation stack, hosting proof or operational metrics are published."
+  },
+  {
+    number: "07", name: "EssentialRush", label: "Client e-commerce storefront", status: "CLIENT PROJECT",
+    stack: "Next.js 16 · React 19 · TypeScript · MongoDB / Mongoose · Prisma · NextAuth · Razorpay · Three.js",
+    problem: "A premium watch storefront needs product discovery, product records, account-aware shopping flows and a strong visual presentation.",
+    work: ["Resume describes a storefront with product catalogs and checkout experiences.", "Repository inspection found a product model with price, category, stock and image fields.", "Reviewed storefront entry points, cart/account UI and the dependency manifest for commerce and 3D packages."],
+    evidence: "The repository has no root README. Razorpay, AI and 3D dependencies are present in the manifest, but live payment credentials, settlement and deployed 3D experiences are not claimed as verified.",
+    link: "https://github.com/mkcumang-sketch/EssentialRush", linkLabel: "Open EssentialRush repository",
+    impact: "Shows commerce-oriented full-stack implementation and integration planning. No verified conversion, checkout latency or production uptime metrics were identified."
+  },
+  {
+    number: "08", name: "TRUVAcademy", label: "Education administration system", status: "REPOSITORY / IMPLEMENTATION",
     stack: "Laravel · PHP · MySQL / MariaDB · Composer · Apache / Nginx",
     problem: "Education administration requires role-specific workflows for students, teachers, parents, finance and library operations.",
     work: ["Worked with Laravel installation and environment configuration guidance.", "Documented application-key generation, migrations and seeders.", "Reviewed seven role areas across the application workflow.", "Documented MySQL and web-server prerequisites."],
@@ -96,7 +114,7 @@ export default function PlatformEngineeringPage() {
       </section>
       <section className="pe-section" id="projects">
         <div className="pe-section-head"><p className="pe-kicker">02 / SELECTED ENGINEERING WORK</p><h2>From application code<br/>to <em>operational reality.</em></h2><p>Case studies distinguish implementation evidence, documented deployment targets and measured outcomes. Where no metric exists, none is invented.</p></div>
-        <div className="pe-projects">{projects.map(p=><article className="pe-project" key={p.number}><div className="pe-project-top"><span>{p.number} / CASE STUDY</span><span>{p.status}</span></div><h3>{p.name}</h3><p className="pe-label">{p.label}</p><p className="pe-stack">{p.stack}</p><div className="pe-detail"><h4>Problem</h4><p>{p.problem}</p></div><div className="pe-detail"><h4>Engineering work</h4><ul>{p.work.map(w=><li key={w}>{w}</li>)}</ul></div><div className="pe-detail"><h4>Evidence & verification</h4><p>{p.evidence}</p></div><div className="pe-impact"><strong>Operational impact</strong><p>{p.impact}</p></div><a className="pe-repo" href={p.link} target="_blank" rel="noreferrer">{p.linkLabel} ↗</a></article>)}</div>
+        <div className="pe-projects">{projects.map(p=><article className="pe-project" key={p.number}><div className="pe-project-top"><span>{p.number} / CASE STUDY</span><span>{p.status}</span></div><h3>{p.name}</h3><p className="pe-label">{p.label}</p><p className="pe-stack">{p.stack}</p><div className="pe-detail"><h4>Problem</h4><p>{p.problem}</p></div><div className="pe-detail"><h4>Engineering work</h4><ul>{p.work.map(w=><li key={w}>{w}</li>)}</ul></div><div className="pe-detail"><h4>Evidence & verification</h4><p>{p.evidence}</p></div><div className="pe-impact"><strong>Operational impact</strong><p>{p.impact}</p></div>{p.link ? <a className="pe-repo" href={p.link} target="_blank" rel="noreferrer">{p.linkLabel} ↗</a> : <p className="pe-repo">No public repository link verified for this project.</p>}</article>)}</div>
       </section>
       <section className="pe-section" id="experience">
         <div className="pe-section-head"><p className="pe-kicker">03 / EXPERIENCE & OWNERSHIP</p><h2>Technical work with<br/><em>operational context.</em></h2></div>
