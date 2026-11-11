@@ -129,6 +129,24 @@
     to { opacity: 1; translate: 0 0; }
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .im-stage { view-timeline: --stage-depth block; }
+    .im-stage-grid,.im-sculpture {
+      translate: 0 0;
+      rotate: 0deg;
+      animation: depth-parallax auto linear both;
+      animation-timeline: --stage-depth;
+      animation-range: entry 0% exit 100%;
+    }
+    @keyframes depth-parallax {
+      from { translate: 0 42px; rotate: -1.5deg; }
+      to { translate: 0 -42px; rotate: 1.5deg; }
+    }
+  }
+}
+
 @media (hover:none), (pointer:coarse) {
   .im-project:hover { transform: none; }
   .im-project:hover .im-art-object { transform: rotateX(58deg) rotateZ(-34deg); }
