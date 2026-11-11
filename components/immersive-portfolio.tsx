@@ -27,12 +27,12 @@ function showreelEmbedUrl(value?: string) {
   if (!value) return null;
   try {
     const url = new URL(value);
-    if (url.hostname === "youtu.be") return `https://www.youtube-nocookie.com/embed/${url.pathname.slice(1)}?autoplay=1&mute=1&rel=0`;
-    if (url.hostname.endsWith("youtube.com")) {
+    if (url.hostname === "youtu.be") { const id = url.pathname.slice(1); return /^[a-zA-Z0-9_-]+$/.test(id) ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0` : null; }
+    if (url.hostname === "youtube.com" || url.hostname.endsWith(".youtube.com")) {
       const id = url.searchParams.get("v") || url.pathname.split("/").filter(Boolean).pop();
-      return id ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0` : null;
+      return id && /^[a-zA-Z0-9_-]+$/.test(id) ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0` : null;
     }
-    if (url.hostname.endsWith("vimeo.com")) {
+    if (url.hostname === "vimeo.com" || url.hostname.endsWith(".vimeo.com")) {
       const id = url.pathname.split("/").filter(Boolean).pop();
       return id && /^\d+$/.test(id) ? `https://player.vimeo.com/video/${id}?autoplay=1&muted=1` : null;
     }
@@ -68,7 +68,7 @@ export function ImmersivePortfolio() {
         setShowShowreel(false);
       }
       if (event.key !== "Tab" || !dialogRef.current) return;
-      const items = Array.from(dialogRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), iframe[tabindex="0"]'));
+      const items = Array.from(dialogRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'));
       if (!items.length) return;
       const first = items[0];
       const last = items[items.length - 1];
@@ -203,7 +203,7 @@ export function ImmersivePortfolio() {
           <div className="im-dialog-top"><span>{showShowreel ? "SHOWREEL / INTRODUCTION" : `CASE STUDY / ${selectedProject?.number}`}</span><button ref={closeRef} type="button" onClick={() => { setSelectedProject(null); setShowShowreel(false); }} aria-label="Close dialog">CLOSE ×</button></div>
           {showShowreel ? <div className="im-showreel">
             <p className="im-eyebrow">A SHORT INTRODUCTION</p><h2>Selected work.<br /><em>In motion.</em></h2>
-            {showreelUrl ? <div className="im-video-frame"><iframe src={showreelUrl} title="Umang Sharma showreel" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen /></div> : <div className="im-showreel-placeholder"><div className="im-placeholder-shape">U<span>.</span></div><strong>Showreel slot ready</strong><p>Add a public YouTube or Vimeo URL as <code>NEXT_PUBLIC_SHOWREEL_URL</code> in the Vercel project environment to activate the embedded reel. No demo video or third-party work has been substituted.</p></div>}
+            {showreelUrl ? <div className="im-video-frame"><iframe tabIndex={0} src={showreelUrl} title="Umang Sharma showreel" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen /></div> : <div className="im-showreel-placeholder"><div className="im-placeholder-shape">U<span>.</span></div><strong>Showreel slot ready</strong><p>Add a public YouTube or Vimeo URL as <code>NEXT_PUBLIC_SHOWREEL_URL</code> in the Vercel project environment to activate the embedded reel. No demo video or third-party work has been substituted.</p></div>}
           </div> : selectedProject && <div className="im-case-study">
             <p className="im-eyebrow">{selectedProject.category}</p><h2>{selectedProject.name}</h2><div className="im-case-meta"><span>STATUS / {selectedProject.status}</span><span>PROJECT / {selectedProject.number}</span><span>STACK / {selectedProject.stack.slice(0, 2).join(" · ")}</span></div>
             <section><span>01 / OVERVIEW</span><p>{selectedProject.details}</p></section>
