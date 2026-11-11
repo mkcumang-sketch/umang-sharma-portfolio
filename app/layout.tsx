@@ -3,26 +3,27 @@ import "./globals.css";
 import "./retro-experience.css";
 import "./game-world.css";
 import "./game-world-refresh.css";
+import "./cinematic-red.css";
 
 export const metadata: Metadata = {
-  title: "Umang Sharma | AI, Design & Operations",
-  description: "Explore Umang Sharma's 3D portfolio: practical digital products, CRM and business systems, CA and hospital automation, AI workflows and design. Founder of TRUV TECH & CONSULTANCY.",
+  title: "Umang Sharma | Vibe Coder & Technical Product Builder",
+  description: "A cinematic 3D portfolio by Umang Sharma — practical digital products, business systems, CRM and CA automation, product engineering and AI-assisted development.",
   applicationName: "Umang Sharma — Portfolio",
   metadataBase: new URL("https://umang-sharma-portfolio.vercel.app"),
   openGraph: {
-    title: "Umang Sharma | AI, Design & Operations",
-    description: "Digital products, useful automation and thoughtful experiences by Umang Sharma, founder of TRUV TECH & CONSULTANCY.",
+    title: "Umang Sharma | Vibe Coder & Technical Product Builder",
+    description: "Ideas into real systems. Explore products, engineering decisions and client work by Umang Sharma.",
     type: "website",
     url: "https://umang-sharma-portfolio.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Umang Sharma | AI, Design & Operations",
-    description: "Digital products, useful automation and thoughtful experiences.",
+    title: "Umang Sharma | Vibe Coder & Technical Product Builder",
+    description: "Ideas into real systems. Explore products, engineering decisions and client work.",
   },
 };
 
-export const viewport: Viewport = { themeColor: "#10130f", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#070708", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body><div className="site-grain" aria-hidden="true"/>{children}</body></html>;
