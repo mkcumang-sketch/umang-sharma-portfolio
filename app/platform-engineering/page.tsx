@@ -105,7 +105,7 @@ export default function PlatformEngineeringPage() {
         <p className="pe-lead">I’m Umang Sharma — a Technical Lead and full-stack product builder focused on deployment workflows, application infrastructure, database operations, automation and security-conscious platform engineering.</p>
         <p className="pe-intro">I work across the application and its operating environment: shaping multi-tenant systems, preparing cloud deployments, containerizing services, validating migrations and documenting release paths. My approach is practical and evidence-led: make the system deployable, make changes safer, and be explicit about what is verified versus still planned.</p>
         <div className="pe-actions"><a className="pe-primary" href="#projects">Explore engineering work ↘</a><a href="mailto:us7907us@gmail.com">Contact Umang ↗</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub profile ↗</a></div>
-        <div className="pe-proofline"><span>06 ENGINEERING CASE STUDIES</span><span>CONTAINERS / CLOUD / DATA / SECURITY</span><span>KANPUR, INDIA</span></div>
+        <div className="pe-proofline"><span>08 ENGINEERING CASE STUDIES</span><span>CONTAINERS / CLOUD / DATA / SECURITY</span><span>KANPUR, INDIA</span></div>
       </section>
       <section className="pe-section" id="competencies">
         <div className="pe-section-head"><p className="pe-kicker">01 / TECHNICAL COMPETENCIES</p><h2>Tools backed by<br/><em>repository evidence.</em></h2><p>These are technologies and practices identified in the resume and inspected repositories. A configured integration is not automatically a claim of production operation.</p></div>
