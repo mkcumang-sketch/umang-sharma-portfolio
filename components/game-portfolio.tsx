@@ -107,12 +107,12 @@ export function GamePortfolio() {
 
     <main id="main-content" tabIndex={-1}>
       <section className="game-zone spawn-zone" id="spawn">
-        <div className="world-sky" aria-hidden="true"><span className="sky-star star-one"/><span className="sky-star star-two"/><span className="sky-star star-three"/><span className="sky-moon"/></div>
+        <div className="world-sky" aria-hidden="true"><span className="sky-star star-one"/><span className="sky-star star-two"/><span className="sky-star star-three"/><span className="sky-moon"/></div><div className="cinematic-type" aria-hidden="true"><span>MAKE</span><span>IT</span><span>REAL</span></div><i className="cinematic-shard shard-a" aria-hidden="true"/><i className="cinematic-shard shard-b" aria-hidden="true"/>
         <div className="spawn-copy">
-          <p className="game-eyebrow"><span className="status-pulse"/> INDIA / REMOTE-READY</p>
-          <h1>Hey, I'm<br/><em>Umang Sharma.</em></h1>
-          <p className="spawn-role">AI · DESIGN · OPERATIONS</p>
-          <p className="spawn-lede">I turn business problems into useful digital products, thoughtful interfaces and practical automations — from CRM and CA workflows to connected business systems.</p>
+          <p className="game-eyebrow"><span className="status-pulse"/> UMANG SHARMA / INDIA</p>
+          <h1>IDEAS INTO<br/><em>REAL SYSTEMS.</em></h1>
+          <p className="spawn-role">VIBE CODER · SYSTEMS BUILDER · PRODUCT ENGINEER</p>
+          <p className="spawn-lede">I turn ideas into practical digital products through AI-assisted development, modern engineering and business-focused execution.</p>
           <div className="spawn-actions"><button className="game-primary" onClick={() => jump(1)}>START EXPLORING <span>↗</span></button><a href={links.github} target="_blank" rel="noreferrer">VIEW GITHUB <span>↗</span></a></div>
           <div className="player-card"><span className="player-avatar">U.</span><div><small>FOUNDER / BUILDER</small><strong>Umang Sharma</strong><span>{links.company}</span></div><b>BUILD / 2026</b></div>
         </div>
@@ -172,7 +172,11 @@ export function GamePortfolio() {
         <h2 id="project-modal-title">{selectedProject.name}</h2>
         <p id="project-modal-description">{selectedProject.details}</p>
         <div className="project-modal-status"><span className={"project-status-dot status-" + selectedProject.status.toLowerCase().replaceAll(" ", "-")}/>{selectedProject.status}</div>
-        <div className="project-tags">{selectedProject.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <div className="project-modal-section"><h3>FEATURES / WHAT IT DOES</h3><ul className="project-feature-list">{selectedProject.features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div>
+        <div className="project-modal-section"><h3>LANGUAGES</h3><div className="project-language-list">{selectedProject.languages.map((language) => <span key={language}>{language}</span>)}</div></div>
+        <div className="project-modal-section"><h3>FRAMEWORKS & TECHNOLOGY</h3><div className="project-tags">{selectedProject.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+        <div className="project-modal-section"><h3>ARCHITECTURE / HOW IT'S BUILT</h3><p className="project-architecture">{selectedProject.architecture}</p></div>
+        {selectedProject.verificationNote && <p className="project-verification">{selectedProject.verificationNote}</p>}
         <div className="project-modal-actions">{selectedProject.repository ? <a href={selectedProject.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>Public repository not listed</span>}<button type="button" onClick={() => setSelectedProject(null)}>BACK TO WORLD</button></div>
       </section>
     </div>}
