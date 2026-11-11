@@ -8,7 +8,7 @@ const groups = [
   { title: "Containers & Orchestration", items: ["Docker", "Docker Compose", "Multi-stage image builds", "Non-root runtime", "Persistent volumes", "Container health checks"] },
   { title: "Data & State", items: ["PostgreSQL", "MongoDB", "SQLite / MySQL", "Prisma ORM", "Drizzle ORM", "Redis / Upstash"] },
   { title: "Security & Reliability", items: ["Tenant isolation", "Role-based access", "Environment secrets", "Rate limiting", "Credential-vault patterns", "Migration safety", "Automated security tests"] },
-  { title: "Engineering & Automation", items: ["TypeScript", "JavaScript", "Node.js", "SQL", "PHP", "Git / GitHub", "Playwright", "Power BI"] },
+  { title: "Engineering & Automation", items: ["TypeScript", "JavaScript", "Node.js", "SQL", "PHP", "Git / GitHub", "Power BI"] },
 ];
 
 const projects = [
@@ -102,8 +102,17 @@ export default function PlatformEngineeringPage() {
         <div className="pe-section-head"><p className="pe-kicker">03 / EXPERIENCE & OWNERSHIP</p><h2>Technical work with<br/><em>operational context.</em></h2></div>
         <div className="pe-timeline">{experience.map(e=><article key={e.company}><div><span>{e.dates}</span><h3>{e.role}</h3><p>{e.company}</p></div><ul>{e.points.map(p=><li key={p}>{p}</li>)}</ul></article>)}</div>
       </section>
+      <section className="pe-section pe-education" id="education">
+        <div className="pe-section-head"><p className="pe-kicker">04 / EDUCATION</p><h2>Learning with<br/><em>practical intent.</em></h2></div>
+        <div className="pe-education-grid">
+          <article><span>2023 · COMPLETED</span><h3>High School — Class 10</h3><p>Tagore Academy, Kanpur · UP Board</p><strong>77%</strong></article>
+          <article><span>CURRENTLY PURSUING</span><h3>Senior Secondary — Class 12</h3><p>Commerce · UP Board</p><strong>Current study</strong></article>
+          <article><span>STATED TARGET PATHWAY</span><h3>BCA / Applied Computer Science</h3><p>Listed in the resume as a target pathway, not a completed qualification.</p><strong>Future pathway</strong></article>
+        </div>
+        <p className="pe-education-note">No professional certifications are listed in the supplied resume.</p>
+      </section>
       <section className="pe-section pe-recruiter">
-        <p className="pe-kicker">04 / RECRUITER QUICK SCAN</p><h2>Why I bring<br/><em>useful range.</em></h2>
+        <p className="pe-kicker">05 / RECRUITER QUICK SCAN</p><h2>Why I bring<br/><em>useful range.</em></h2>
         <div className="pe-scan"><p><b>01</b> I understand both the application and the deployment environment it depends on.</p><p><b>02</b> I have hands-on repository evidence across Docker, GitHub Actions, Cloudflare, Vercel and database operations.</p><p><b>03</b> I build security and tenant boundaries into application workflows, not just interface features.</p><p><b>04</b> I document migration, staging, release and smoke-test procedures to make operations repeatable.</p><p><b>05</b> I combine technical ownership with delivery, analytics and cross-functional operations experience.</p></div>
       </section>
       <section className="pe-footer"><p className="pe-kicker">LET’S BUILD RELIABLE SYSTEMS</p><h2>Good engineering<br/>starts with <em>clarity.</em></h2><p>Open to platform engineering, DevOps, cloud deployment and technical product opportunities.</p><div><a href="mailto:us7907us@gmail.com">us7907us@gmail.com ↗</a><a href="tel:+918960366706">+91 89603 66706</a><a href="https://www.linkedin.com/in/umang-sharma-4a21a5350/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub ↗</a></div><small>© 2026 UMANG SHARMA · BUILT WITH VERIFIED PROJECT EVIDENCE</small></section>
