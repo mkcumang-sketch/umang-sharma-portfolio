@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./immersive-portfolio.css";
+import "./kinetic-depth.css";
 
 export const metadata: Metadata = {
   title: "Umang Sharma | Creative Technologist & Technical Product Builder",
