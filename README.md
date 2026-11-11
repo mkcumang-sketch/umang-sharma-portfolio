@@ -1,38 +1,51 @@
-# Umang Sharma — Vibe Coder & Technical Product Builder
+# Umang Sharma — Creative Technologist & Technical Product Builder
 
-A cinematic, responsive 3D portfolio built with Next.js, React, TypeScript, Framer Motion and CSS 3D transforms.
+An immersive, responsive portfolio built with Next.js 15, React 19, TypeScript and CSS 3D transforms.
 
 ## Art direction
-- Black / charcoal / crimson red palette with restrained off-white typography
-- Cinematic hero composition, floating oversized typography, red light, motion shards and layered 3D forms
-- High-impact condensed display typography with a clean, readable body face
-- Responsive layouts, accessible navigation and reduced-motion support
+- Dark studio palette with restrained warm-metal accents
+- Full-screen abstract 3D-inspired hero sculpture and cinematic typography
+- CSS-generated visual studies, project archive and interactive case-study dialogs
+- Responsive layouts, accessible navigation, keyboard-dismissable dialogs and reduced-motion support
 - No voice agent, microphone interaction or unconfigured AI terminal
 
 ## Experience
-- Five explorable zones: Spawn Point, Player Profile, Project Islands, Services & Skills, and Final Portal
-- Keyboard navigation with W/S or arrow keys, Enter to jump to the selected zone, plus touch-friendly mobile navigation
-- Project case-study dialogs with feature breakdowns, implementation languages, frameworks, architecture and verification notes
-- Project details sourced from repository READMEs, feature audits, package manifests and inspected source files
-- Project statuses are preserved as supplied; externally blocked or roadmap-only features are labelled clearly
-- Direct email and phone contact actions
+- Selected-work gallery with category filters
+- Case studies with verified overview, scope, implementation details, stack and project status
+- About section, build process, capabilities, working toolkit and direct contact links
+- Optional YouTube / Vimeo showreel modal
+- Mobile-first navigation and responsive project layouts
+
+## Showreel setup
+The showreel modal is ready for a public YouTube or Vimeo video. Set this optional environment variable in Vercel or your local environment:
+
+```bash
+NEXT_PUBLIC_SHOWREEL_URL=https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+```
+
+Supported URLs include YouTube watch / share links and Vimeo video links. If the variable is not configured, the modal displays a clear setup message instead of substituting an unrelated demo reel.
+
+## Project imagery and 3D assets
+Current portfolio artwork is generated with CSS and is labelled as visual studies. It is not represented as client renders, finished 3D models or production screenshots. Original renders, moodboards, wireframes, turntables and GLB files can be added once approved project assets are supplied. No third-party model or client credit is invented.
 
 ## Selected work
 The portfolio presents TRUV CA, Ask2Global / TaskFlow, Dream Properties, TRUV Tech CRM, TRUV Tech Official Website and EssentialRush.
 
-Each project detail view separates:
-- **Features:** documented or source-inspected functionality
-- **Languages:** languages evidenced by the repository
-- **Frameworks & technology:** runtime, framework, database and relevant libraries
-- **Architecture:** concise explanation of how the application is put together
-- **Verification notes:** external dependencies, partial features and roadmap items that should not be mistaken for shipped functionality
+Project stages remain unchanged:
+- TRUV CA — In Development
+- Ask2Global / TaskFlow — Live Demo
+- Dream Properties — Client Project
+- TRUV Tech CRM — Live Demo
+- TRUV Tech Official Website — In Development
+- EssentialRush — Client Project
+
+Project details separate documented functionality, technologies, architecture and verification notes. Externally blocked or roadmap-only features are not described as shipped.
 
 ## Portfolio stack
 - Next.js 15 + React 19 + TypeScript
-- Tailwind CSS
-- Framer Motion
+- Tailwind CSS (existing project styling utilities)
 - CSS 3D transforms and responsive motion design
-- Vercel production output
+- Vercel deployment
 
 ## Local development
 ```bash
