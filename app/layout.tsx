@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Umang Sharma | Creative Technologist & Technical Product Builder",
-    description: "Product engineering, business systems and visual digital experiences.",
+    title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
+    description: "Evidence-led platform engineering, DevOps, cloud deployment and secure SaaS delivery."
   },
 };
 
