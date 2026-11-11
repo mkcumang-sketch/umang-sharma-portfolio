@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import "./platform-engineering.css";
 
 const groups = [
@@ -106,7 +107,7 @@ const experience = [
 export default function PlatformEngineeringPage() {
   return (
     <main className="pe-page">
-      <header className="pe-nav"><a href="/" className="pe-brand">UMANG SHARMA <span>/ PLATFORM ENGINEERING</span></a><nav><a href="#competencies">Competencies</a><a href="#projects">Case studies</a><a href="#experience">Experience</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header>
+      <header className="pe-nav"><Link href="/" className="pe-brand">UMANG SHARMA <span>/ PLATFORM ENGINEERING</span></Link><nav><a href="#competencies">Competencies</a><a href="#projects">Case studies</a><a href="#experience">Experience</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header>
       <section className="pe-hero">
         <p className="pe-kicker">PLATFORM ENGINEERING · DEVOPS · CLOUD DELIVERY</p>
         <h1>Build it. Ship it.<br/><em>Keep it reliable.</em></h1>
