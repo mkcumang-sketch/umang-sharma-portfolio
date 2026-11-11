@@ -188,3 +188,65 @@
 @keyframes world-loader-spin{to{transform:rotate(360deg)}}
 @media(max-width:760px){.world-loading-overlay{display:none}}
 @media(prefers-reduced-motion:reduce){.world-loader-ring{animation:none;border-color:var(--g-gold)}}
+
+
+/* Cinematic shadow portrait hero — inspired by the supplied video reference */
+.world-hero-cinematic{min-height:min(900px,calc(100svh - 78px));min-height:max(720px,calc(100svh - 78px));display:block;overflow:hidden;padding:0 clamp(24px,6vw,92px) 90px;background:radial-gradient(ellipse at 52% 52%,rgba(132,12,25,.2),transparent 38%),linear-gradient(115deg,#080708 0%,#10090b 52%,#080708 100%)}
+.world-hero-cinematic .world-hero-backdrop{z-index:0;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.world-hero-cinematic .world-hero-backdrop span{width:54vw;height:54vw;right:20%;top:-8%;border-color:#e5233517;box-shadow:0 0 0 45px #e5233508,0 0 0 100px #e5233505}
+.world-hero-cinematic .world-hero-backdrop i{left:50%;background:linear-gradient(transparent,#e5233520,transparent)}
+.shadow-nameplate{position:absolute;z-index:1;inset:16% -4% auto;display:flex;flex-direction:column;align-items:center;pointer-events:none;transform:scaleX(.94)}
+.shadow-nameplate span{display:block;color:#d7192d;font-family:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;font-size:clamp(150px,25vw,390px);font-weight:900;line-height:.66;letter-spacing:-.055em;white-space:nowrap;text-shadow:0 8px 0 #5c0710,0 24px 70px #000}
+.shadow-nameplate span+span{color:#8e101d;margin-left:12vw}
+.shadow-figure{position:absolute;z-index:3;left:50%;bottom:0;width:min(39vw,510px);height:88%;transform:translateX(-43%);display:flex;align-items:flex-end;justify-content:center;pointer-events:none;filter:drop-shadow(0 0 22px rgba(220,24,42,.16))}
+.shadow-figure svg{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 12px 26px #000)}
+.shadow-figure-rim{position:absolute;inset:12% 15% 0;background:linear-gradient(90deg,transparent 0%,rgba(207,20,38,.13) 47%,transparent 54%);mix-blend-mode:screen;filter:blur(26px);opacity:.55}
+.shadow-hero-copy{position:absolute;z-index:5;left:clamp(24px,7vw,112px);top:50%;width:min(38vw,490px);transform:translateY(-35%);text-shadow:0 3px 18px #000}
+.shadow-hero-copy .world-eyebrow{color:#f0dfe0;margin-bottom:24px}
+.shadow-hero-copy .world-eyebrow>i{background:#ef2639;box-shadow:0 0 14px #ef2639}
+.shadow-hero-copy h1{margin:0;font:900 clamp(48px,6.2vw,92px)/.82 'Barlow Condensed',Impact,'Arial Narrow',sans-serif;letter-spacing:-.025em;text-transform:uppercase}
+.shadow-hero-copy h1 em{color:#ed293d;font-style:normal}
+.shadow-hero-copy .world-roles{margin-top:23px;color:#eee0e1;font-size:9px;line-height:1.9}
+.shadow-hero-copy .world-roles span{color:#ef2639}
+.shadow-hero-copy .world-intro{max-width:410px;margin-top:17px;color:#c9bfc0;font-size:12px;line-height:1.8}
+.shadow-hero-copy .world-actions{gap:9px;margin-top:22px}
+.shadow-hero-copy .world-primary{background:#e92338;border-color:#e92338;color:#fff!important}
+.shadow-hero-copy .world-primary:hover{background:#ff3b50}
+.shadow-hero-copy .world-secondary{border-color:#ffffff30;background:#08070880;color:#fff}
+.shadow-hero-copy .world-secondary:hover{border-color:#ed293d;color:#ff6472}
+.shadow-hero-side{position:absolute;z-index:4;right:clamp(24px,6vw,92px);top:42%;display:flex;flex-direction:column;gap:20px;align-items:flex-end;text-align:right;color:#c7babc;font:8px 'DM Mono',monospace;letter-spacing:.14em}
+.shadow-hero-side strong{font:800 11px/1.8 'DM Mono',monospace;color:#f3e9e9;letter-spacing:.12em}
+.shadow-hero-side i{color:#ed5360;font-style:normal}
+.world-hero-cinematic .world-hero-bottom{z-index:6;left:clamp(24px,6vw,92px);right:clamp(24px,6vw,92px);color:#9b8588}
+@media(max-width:1050px){
+ .shadow-nameplate{top:20%;left:-8%;right:-8%}
+ .shadow-nameplate span{font-size:clamp(145px,26vw,280px)}
+ .shadow-figure{width:48vw;height:78%;left:59%;opacity:.9}
+ .shadow-hero-copy{width:42vw;left:5vw}
+ .shadow-hero-side{right:4vw;top:25%}
+}
+@media(max-width:760px){
+ .world-hero-cinematic{min-height:850px;padding:0 22px 78px}
+ .shadow-nameplate{top:14%;inset-inline:-25%;transform:scaleX(.9)}
+ .shadow-nameplate span{font-size:clamp(116px,29vw,205px);line-height:.72}
+ .shadow-nameplate span+span{margin-left:16vw}
+ .shadow-figure{width:84vw;height:59%;left:68%;bottom:0;opacity:.86;transform:translateX(-50%)}
+ .shadow-hero-copy{top:11%;left:22px;width:calc(100% - 44px);transform:none}
+ .shadow-hero-copy .world-eyebrow{font-size:8px;margin-bottom:17px}
+ .shadow-hero-copy h1{font-size:clamp(53px,14vw,76px)}
+ .shadow-hero-copy .world-roles{max-width:310px;font-size:7px;margin-top:14px}
+ .shadow-hero-copy .world-intro{max-width:330px;font-size:11px;line-height:1.65;margin-top:10px}
+ .shadow-hero-copy .world-actions{margin-top:15px;gap:7px}
+ .shadow-hero-copy .world-primary,.shadow-hero-copy .world-secondary{min-height:40px;padding:0 10px;font-size:7px;gap:8px}
+ .shadow-hero-side{top:auto;bottom:66px;right:22px;gap:8px;font-size:6px}
+ .shadow-hero-side strong{font-size:8px}
+ .world-hero-cinematic .world-hero-bottom{left:22px;right:22px;bottom:18px;font-size:6px;gap:6px}
+ .world-hero-cinematic .world-hero-bottom span:nth-child(2){display:none}
+}
+@media(max-width:390px){
+ .world-hero-cinematic{min-height:820px}
+ .shadow-hero-copy h1{font-size:51px}
+ .shadow-figure{height:55%;width:92vw}
+ .shadow-hero-copy .world-intro{max-width:290px}
+}
+@media(prefers-reduced-motion:reduce){.shadow-figure,.shadow-nameplate{animation:none!important;transform:none}}

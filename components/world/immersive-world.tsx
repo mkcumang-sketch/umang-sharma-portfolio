@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -8,19 +7,7 @@ import { links, projects, toolkit } from "@/data/portfolio";
 import type { Project } from "@/data/portfolio";
 import { ScrollMotion } from "@/components/world/scroll-motion";
 
-const PortfolioScene = dynamic(() => import("@/components/world/portfolio-scene"), {
-  ssr: false,
-  loading: () => <div className="world-canvas-fallback" aria-hidden="true" />,
-});
 
-const destinations = [
-  { id: "about", number: "01", label: "About me", detail: "The person behind the products" },
-  { id: "skills", number: "02", label: "Skills & technologies", detail: "Tools, systems and learning map" },
-  { id: "projects", number: "03", label: "Projects", detail: "Six real builds and their current status" },
-  { id: "engineering", number: "04", label: "Platform engineering", detail: "DevOps practice and architecture" },
-  { id: "experience", number: "05", label: "Experience & case studies", detail: "Career timeline and technical evidence" },
-  { id: "contact", number: "06", label: "Contact", detail: "Start a useful conversation" },
-];
 
 const skillGroups = [
   { title: "Product engineering", items: ["Next.js", "React", "TypeScript", "Node.js", "PHP", "REST APIs"] },
@@ -36,10 +23,6 @@ const architectureNodes = [
   { id: "data", title: "Data & state", subtitle: "PostgreSQL · Redis", detail: "Persistent records, migrations, tenant boundaries and cache-backed supporting services." },
   { id: "edge", title: "Edge & delivery", subtitle: "Vercel · Cloudflare", detail: "Web delivery, edge services and provider-managed runtime capabilities." },
 ];
-
-function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-}
 
 function ProjectDetails({ project, onClose }: { project: Project; onClose: () => void }) {
   const closeButton = useRef<HTMLButtonElement>(null);
@@ -93,28 +76,11 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
 }
 
 export function ImmersiveWorld() {
-  const [mode, setMode] = useState<"explore" | "quick">("explore");
-  const [paused, setPaused] = useState(false);
-  const [sceneEnabled, setSceneEnabled] = useState(false);
-  const [sceneReady, setSceneReady] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [architectureFocus, setArchitectureFocus] = useState(architectureNodes[0].id);
   const [activeFilter, setActiveFilter] = useState("All projects");
   const closeProject = useCallback(() => setSelectedProject(null), []);
 
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const small = window.matchMedia("(max-width: 760px)").matches;
-    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
-    const cores = navigator.hardwareConcurrency ?? 8;
-    const probe = document.createElement("canvas");
-    const webglAvailable = Boolean(probe.getContext("webgl2") || probe.getContext("webgl"));
-    setSceneEnabled(!reduced && !small && memory >= 4 && cores >= 4 && webglAvailable);
-    setPaused(reduced);
-  }, []);
-
-  const navigate = useCallback((id: string) => scrollToSection(id), []);
-  const markSceneReady = useCallback(() => setSceneReady(true), []);
   const selectedArchitecture = useMemo(
     () => architectureNodes.find((node) => node.id === architectureFocus) ?? architectureNodes[0],
     [architectureFocus],
@@ -130,35 +96,41 @@ export function ImmersiveWorld() {
         <nav className="world-quick-nav" aria-label="Quick navigation">
           <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><Link href="/platform-engineering">DevOps</Link><a href="#experience">Experience</a><a href="#contact">Contact</a>
         </nav>
-        <div className="world-mode-switch" role="group" aria-label="Navigation mode">
-          <button type="button" aria-pressed={mode === "explore"} className={mode === "explore" ? "is-active" : ""} onClick={() => setMode("explore")}>EXPLORE</button>
-          <button type="button" aria-pressed={mode === "quick"} className={mode === "quick" ? "is-active" : ""} onClick={() => setMode("quick")}>QUICK NAV</button>
-        </div>
       </header>
 
       <main id="main-content">
-        <section className={"world-hero" + (mode === "quick" ? " is-quick" : "")} id="top">
+        <section className="world-hero world-hero-cinematic" id="top">
           <div className="world-hero-backdrop" aria-hidden="true"><span /><i /><b /></div>
-          {sceneEnabled && <div className="world-scene" role="group" aria-label="Interactive 3D portfolio world"><PortfolioScene paused={paused} onNavigate={navigate} onReady={markSceneReady} /></div>}
-          {!sceneEnabled && <div className="world-static-orb" aria-hidden="true"><span /><i /><b /></div>}
-          {sceneEnabled && !sceneReady && <div className="world-loading-overlay" role="status" aria-live="polite"><span className="world-loader-ring" /><span>INITIALIZING PORTFOLIO WORLD</span></div>}
-          <div className="world-hero-copy">
-            <p className="world-eyebrow"><i /> INDEPENDENT BUILDER / FOUNDER AT TRUV TECH &amp; CONSULTANCY</p>
-            <h1>UMANG<br /><em>SHARMA.</em></h1>
+          <div className="shadow-nameplate" aria-hidden="true"><span>UMANG</span><span>SHARMA</span></div>
+          <div className="shadow-figure" aria-hidden="true">
+            <svg viewBox="0 0 440 700" role="presentation" focusable="false">
+              <defs>
+                <linearGradient id="shadowRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#1c1c1e"/><stop offset=".52" stopColor="#050506"/><stop offset="1" stopColor="#26070b"/></linearGradient>
+                <linearGradient id="shadowJacket" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#080809"/><stop offset=".48" stopColor="#171719"/><stop offset="1" stopColor="#030304"/></linearGradient>
+              </defs>
+              <ellipse cx="220" cy="118" rx="62" ry="83" fill="#020203"/>
+              <path d="M174 185 L266 185 L282 235 Q331 245 361 286 L420 650 Q423 674 399 680 L41 680 Q17 674 20 650 L79 286 Q109 245 158 235 Z" fill="url(#shadowJacket)" stroke="#23080c" strokeWidth="3"/>
+              <path d="M174 190 Q220 222 266 190 L294 253 L220 360 L146 253 Z" fill="#050506"/>
+              <path d="M158 236 L220 360 L119 665 L42 665 L82 304 Q99 258 158 236Z" fill="url(#shadowRim)"/>
+              <path d="M282 236 L220 360 L321 665 L398 665 L358 304 Q341 258 282 236Z" fill="#050506"/>
+              <path d="M220 360 L184 665 L256 665 Z" fill="#09090a"/>
+              <path d="M158 236 L220 360 L282 236" fill="none" stroke="#2b0a0e" strokeWidth="2" opacity=".8"/>
+              <path d="M205 202 Q220 218 235 202 L248 243 L220 281 L192 243Z" fill="#030304"/>
+            </svg>
+            <span className="shadow-figure-rim" />
+          </div>
+          <div className="shadow-hero-copy">
+            <p className="world-eyebrow"><i /> HELLO, I’M UMANG SHARMA</p>
+            <h1>BUILDING<br/><em>WHAT’S NEXT.</em></h1>
             <p className="world-roles">VIBE CODER <span>·</span> SYSTEMS BUILDER <span>·</span> AI SOLUTIONS ARCHITECT</p>
             <p className="world-intro">I turn ideas into practical digital products through AI-assisted development, modern engineering, and business-focused execution.</p>
             <div className="world-actions">
-              <a className="world-primary" href="#about">START EXPLORING <span>↗</span></a>
+              <a className="world-primary" href="#projects">EXPLORE MY WORK <span>↗</span></a>
               <Link className="world-secondary" href="/platform-engineering">PLATFORM ENGINEERING <span>↗</span></Link>
             </div>
-            <div className="world-meta"><span>INDIA / 2026</span><span>PRODUCTS · SYSTEMS · DELIVERY</span><span>TRUV TECH &amp; CONSULTANCY</span></div>
           </div>
-          {mode === "explore" && <aside className="world-portals" aria-label="Explore portfolio areas">
-            <span className="world-portals-heading">SELECT A DESTINATION <i>06 AREAS</i></span>
-            {destinations.map((item) => <button type="button" key={item.id} onClick={() => navigate(item.id)}><span>{item.number}</span><strong>{item.label}<small>{item.detail}</small></strong><b>↗</b></button>)}
-          </aside>}
-          <div className="world-hero-bottom"><span>INTERACTIVE PORTFOLIO / BUILD 001</span><span>{sceneEnabled ? "3D WORLD READY" : "LIGHTWEIGHT MODE"}</span><span>SCROLL TO DESCEND ↓</span></div>
-          {sceneEnabled && <button className="world-motion-toggle" type="button" onClick={() => setPaused((value) => !value)}>{paused ? "RESUME WORLD" : "PAUSE WORLD"}</button>}
+          <div className="shadow-hero-side"><span>FOUNDER / TRUV TECH &amp; CONSULTANCY</span><strong>PRODUCTS<br/>SYSTEMS<br/>EXPERIENCES</strong><i>INDIA · 2026</i></div>
+          <div className="world-hero-bottom"><span>UMANG SHARMA / DIGITAL PORTFOLIO</span><span>TECHNICAL PRODUCT BUILDER</span><span>SCROLL TO EXPLORE ↓</span></div>
         </section>
 
         <section className="world-section world-about" id="about">
