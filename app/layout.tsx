@@ -3,6 +3,8 @@ import "./globals.css";
 import "./immersive-portfolio.css";
 import "./kinetic-depth.css";
 import "../components/world/immersive-world.css";
+import "./video-reference-system.css";
+import { SiteIntro } from "@/components/site-intro";
 
 export const metadata: Metadata = {
   title: "Umang Sharma | Immersive Portfolio — Systems Builder & AI Solutions Architect",
@@ -25,5 +27,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#08090b", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><div className="site-grain" aria-hidden="true" />{children}</body></html>;
+  return <html lang="en"><body><SiteIntro /><div className="site-grain" aria-hidden="true" />{children}</body></html>;
 }
