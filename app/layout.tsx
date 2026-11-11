@@ -1,13 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import "./retro-experience.css";
 import "./game-world.css";
-import "./game-world-refresh.css";
-import "./cinematic-red.css";
 
 export const metadata: Metadata = {
   title: "Umang Sharma | Vibe Coder & Technical Product Builder",
-  description: "A cinematic 3D portfolio by Umang Sharma — practical digital products, business systems, CRM and CA automation, product engineering and AI-assisted development.",
+  description: "A cinematic 3D portfolio by Umang Sharma — practical digital products, business systems, product engineering and AI-assisted development.",
   applicationName: "Umang Sharma — Portfolio",
   metadataBase: new URL("https://umang-sharma-portfolio.vercel.app"),
   openGraph: {
@@ -26,5 +23,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#070708", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><div className="site-grain" aria-hidden="true"/>{children}</body></html>;
+  return <html lang="en"><body><div className="site-grain" aria-hidden="true" />{children}</body></html>;
 }
