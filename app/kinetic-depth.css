@@ -118,7 +118,7 @@
 @keyframes depth-halo { from { transform: scale(.92); opacity: .55; } to { transform: scale(1.08); opacity: .9; } }
 @keyframes depth-grid-drift { from { background-position: 0 0,0 0; } to { background-position: 0 42px,42px 0; } }
 @keyframes depth-orb-breathe { 0%,100% { transform: rotateX(18deg) translateY(0); } 50% { transform: rotateX(23deg) translateY(-8px); } }
-@supports (animation-timeline: view()) {
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
   .im-section-heading,.im-project,.im-about-copy,.im-process>div,.im-capability-grid article,.im-toolkit {
     animation: depth-enter linear both;
     animation-timeline: view();
