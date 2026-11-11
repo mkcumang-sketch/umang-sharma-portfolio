@@ -1,0 +1,144 @@
+/* Cinematic interaction layer: progressive enhancement over the existing portfolio. */
+.immersive-world {
+  --glass: rgba(20, 23, 28, .62);
+  --glass-edge: rgba(255, 255, 255, .16);
+  --glass-highlight: rgba(255, 255, 255, .07);
+  --depth-gold: #d5a15e;
+}
+.im-header {
+  background: rgba(8, 9, 11, .68);
+  border-bottom-color: rgba(255,255,255,.11);
+  box-shadow: 0 12px 40px rgba(0,0,0,.16);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: blur(24px) saturate(145%);
+}
+.im-nav a { position: relative; transition: color .25s ease; }
+.im-nav a::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: -8px;
+  height: 1px; background: var(--depth-gold); transition: right .3s cubic-bezier(.2,.8,.2,1);
+}
+.im-nav a:hover { color: #f1d4ad; }
+.im-nav a:hover::after { right: 0; }
+.im-hero { isolation: isolate; perspective: 1400px; }
+.im-hero-copy { transform-style: preserve-3d; animation: depth-copy-in 1s cubic-bezier(.2,.75,.2,1) both; }
+.im-hero h1 { text-wrap: balance; }
+.im-hero h1 em {
+  color: #e4bc88;
+  background: linear-gradient(105deg,#f1d9b6 5%,#c68d51 48%,#f0d2a7 88%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 10px 32px rgba(213,161,94,.12));
+}
+.im-stage { perspective: 1500px; transform-style: preserve-3d; isolation: isolate; }
+.im-stage-halo { filter: blur(2px); animation: depth-halo 11s ease-in-out infinite alternate; }
+.im-stage-grid {
+  transform: perspective(800px) rotateX(64deg) translateY(16%);
+  transform-origin: center bottom;
+  background-image: linear-gradient(rgba(213,161,94,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(213,161,94,.11) 1px,transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to top,rgba(0,0,0,.8),transparent 76%);
+  animation: depth-grid-drift 24s linear infinite;
+}
+.im-orbit { box-shadow: 0 0 28px rgba(213,161,94,.08), inset 0 0 18px rgba(213,161,94,.04); }
+.im-sculpture { filter: drop-shadow(0 35px 45px rgba(0,0,0,.5)); }
+.im-sculpture-core { box-shadow: inset 14px 12px 28px rgba(255,255,255,.18), inset -18px -20px 35px rgba(0,0,0,.38), 0 0 65px rgba(213,161,94,.2); }
+.im-stage-plinth {
+  border-color: rgba(255,255,255,.24);
+  background: linear-gradient(120deg,rgba(255,255,255,.12),rgba(17,19,22,.82) 44%,rgba(255,255,255,.04));
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+}
+.im-button {
+  box-shadow: 0 10px 35px rgba(213,161,94,.12), inset 0 1px rgba(255,255,255,.28);
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, background .3s ease;
+}
+.im-button:hover { transform: translateY(-3px) translateZ(12px); box-shadow: 0 18px 44px rgba(213,161,94,.2), inset 0 1px rgba(255,255,255,.35); }
+.im-filters button {
+  border-radius: 999px; background: rgba(255,255,255,.025);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.im-project {
+  position: relative; overflow: hidden; border-radius: 16px;
+  border-color: rgba(255,255,255,.14);
+  background: linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.012) 45%),rgba(15,17,21,.78);
+  box-shadow: 0 18px 55px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.07);
+  transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
+}
+.im-project::before {
+  content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none;
+  background: linear-gradient(125deg,rgba(255,255,255,.11),transparent 23%,transparent 72%,rgba(213,161,94,.07));
+  opacity: .45; transition: opacity .35s ease;
+}
+.im-project:hover {
+  transform: perspective(1100px) rotateX(1.2deg) rotateY(-1.4deg) translateY(-7px);
+  border-color: rgba(213,161,94,.52);
+  box-shadow: 0 28px 75px rgba(0,0,0,.34),0 0 0 1px rgba(213,161,94,.07),inset 0 1px rgba(255,255,255,.1);
+}
+.im-project:hover::before { opacity: 1; }
+.im-project-art { transform: translateZ(18px); }
+.im-art-object { transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
+.im-project:hover .im-art-object { transform: rotateX(58deg) rotateZ(-34deg) translateZ(16px) scale(1.08); filter: drop-shadow(0 30px 22px rgba(0,0,0,.65)); }
+.im-project-info { position: relative; z-index: 2; background: linear-gradient(180deg,rgba(255,255,255,.025),rgba(7,8,10,.22)); }
+.im-project-stack i,.im-case-tags i,.im-tool-list span {
+  border-radius: 999px; border-color: rgba(255,255,255,.15);
+  background: rgba(255,255,255,.035);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.im-about-art,.im-capability-grid article,.im-contact-orb {
+  transform-style: preserve-3d;
+}
+.im-about-art {
+  border-radius: 20px; border-color: rgba(255,255,255,.16);
+  background: radial-gradient(ellipse at 50% 42%,rgba(213,161,94,.16),transparent 58%),linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.008)),#111418;
+  box-shadow: inset 0 1px rgba(255,255,255,.09),0 25px 70px rgba(0,0,0,.2);
+}
+.im-about-ring { filter: drop-shadow(0 15px 30px rgba(213,161,94,.18)); }
+.im-capability-grid article {
+  background: linear-gradient(145deg,rgba(255,255,255,.035),transparent 70%);
+  transition: background .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.im-capability-grid article:hover { transform: translateY(-4px); background: linear-gradient(145deg,rgba(213,161,94,.11),rgba(255,255,255,.018)); }
+.im-contact-orb {
+  box-shadow: 0 0 100px rgba(213,161,94,.14),inset 16px 14px 34px rgba(255,255,255,.22),inset -30px -40px 70px rgba(0,0,0,.62);
+  animation: depth-orb-breathe 9s ease-in-out infinite;
+}
+.im-dialog {
+  border-radius: 22px; border-color: rgba(213,161,94,.48);
+  background: linear-gradient(145deg,rgba(255,255,255,.075),transparent 32%),rgba(14,16,20,.92);
+  box-shadow: 0 40px 130px rgba(0,0,0,.78),inset 0 1px rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(28px) saturate(130%); backdrop-filter: blur(28px) saturate(130%);
+}
+.im-dialog-top { background: rgba(17,19,23,.82); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.im-showreel-placeholder,.im-mini-study {
+  border-radius: 14px; background: linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.012)),#0d0f12;
+}
+@keyframes depth-copy-in {
+  from { opacity: 0; transform: translate3d(0,24px,-35px); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+@keyframes depth-halo { from { transform: scale(.92); opacity: .55; } to { transform: scale(1.08); opacity: .9; } }
+@keyframes depth-grid-drift { from { background-position: 0 0,0 0; } to { background-position: 0 42px,42px 0; } }
+@keyframes depth-orb-breathe { 0%,100% { transform: rotateX(18deg) translateY(0); } 50% { transform: rotateX(23deg) translateY(-8px); } }
+@supports (animation-timeline: view()) {
+  .im-section-heading,.im-project,.im-about-copy,.im-process>div,.im-capability-grid article,.im-toolkit {
+    animation: depth-enter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
+  @keyframes depth-enter {
+    from { opacity: .35; transform: translateY(34px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+@media (hover:none), (pointer:coarse) {
+  .im-project:hover { transform: none; }
+  .im-project:hover .im-art-object { transform: rotateX(58deg) rotateZ(-34deg); }
+}
+@media (max-width:760px) {
+  .im-header { background: rgba(8,9,11,.78); }
+  .im-dialog { border-radius: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .im-hero-copy,.im-stage-halo,.im-stage-grid,.im-contact-orb { animation: none !important; }
+  .im-project,.im-art-object,.im-capability-grid article,.im-button { transition: none !important; }
+  @supports (animation-timeline: view()) { .im-section-heading,.im-project,.im-about-copy,.im-process>div,.im-capability-grid article,.im-toolkit { animation: none !important; } }
+}
