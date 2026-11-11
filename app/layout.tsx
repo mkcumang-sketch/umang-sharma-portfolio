@@ -4,20 +4,20 @@ import "./immersive-portfolio.css";
 import "./kinetic-depth.css";
 
 export const metadata: Metadata = {
-  title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
-  description: "Umang Sharma — platform engineering, DevOps, cloud deployment, containerization, database operations and secure SaaS delivery.",
+  title: "Umang Sharma | Immersive Portfolio — Systems Builder & AI Solutions Architect",
+  description: "Explore Umang Sharma’s interactive portfolio: real products, systems building, AI-assisted engineering, DevOps and platform engineering.",
   applicationName: "Umang Sharma — Portfolio",
   metadataBase: new URL("https://umang-sharma-portfolio.vercel.app"),
   openGraph: {
-    title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
-    description: "Explore evidence-led platform engineering case studies, cloud deployment, Docker, GitHub Actions and multi-tenant systems by Umang Sharma.",
+    title: "Umang Sharma | Immersive Portfolio — Systems Builder & AI Solutions Architect",
+    description: "A cinematic, interactive portfolio exploring real products, technical systems, DevOps and platform engineering by Umang Sharma.",
     type: "website",
     url: "https://umang-sharma-portfolio.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
-    description: "Evidence-led platform engineering, DevOps, cloud deployment and secure SaaS delivery."
+    title: "Umang Sharma | Immersive Portfolio — Systems Builder & AI Solutions Architect",
+    description: "Vibe Coder, Systems Builder, AI Solutions Architect and Founder at TRUV Tech & Consultancy."
   },
 };
 
