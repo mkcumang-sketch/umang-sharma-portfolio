@@ -4,13 +4,13 @@ import "./immersive-portfolio.css";
 import "./kinetic-depth.css";
 
 export const metadata: Metadata = {
-  title: "Umang Sharma | Creative Technologist & Technical Product Builder",
-  description: "An immersive portfolio by Umang Sharma — product engineering, business systems, automation and visual digital experiences.",
+  title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
+  description: "Umang Sharma — platform engineering, DevOps, cloud deployment, containerization, database operations and secure SaaS delivery.",
   applicationName: "Umang Sharma — Portfolio",
   metadataBase: new URL("https://umang-sharma-portfolio.vercel.app"),
   openGraph: {
-    title: "Umang Sharma | Creative Technologist & Technical Product Builder",
-    description: "Ideas shaped into experiences. Explore verified products, systems and client work by Umang Sharma.",
+    title: "Umang Sharma | Platform Engineering, DevOps & Technical Product Builder",
+    description: "Explore evidence-led platform engineering case studies, cloud deployment, Docker, GitHub Actions and multi-tenant systems by Umang Sharma.",
     type: "website",
     url: "https://umang-sharma-portfolio.vercel.app",
   },
