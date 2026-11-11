@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { links, projects, toolkit } from "@/data/portfolio";
 import type { Project } from "@/data/portfolio";
@@ -67,8 +68,8 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
   }, [onClose]);
 
   return (
-    <div className="world-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <section className="world-modal" role="dialog" aria-modal="true" aria-labelledby="world-modal-title">
+    <motion.div className="world-modal-backdrop" role="presentation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <motion.section className="world-modal" role="dialog" aria-modal="true" aria-labelledby="world-modal-title" initial={{ opacity: 0, y: 18, scale: 0.985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12, scale: 0.99 }} transition={{ duration: 0.22, ease: "easeOut" }}>
         <div className="world-modal-top"><span>PROJECT FILE / {project.number}</span><button ref={closeButton} type="button" onClick={onClose} aria-label="Close project details">CLOSE ×</button></div>
         <p className="world-eyebrow">{project.category}</p>
         <h2 id="world-modal-title">{project.name}</h2>
@@ -85,8 +86,8 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
           {project.repository ? <a href={project.repository} target="_blank" rel="noreferrer">OPEN VERIFIED REPOSITORY ↗</a> : <span>Repository not publicly linked</span>}
           <button type="button" onClick={onClose}>RETURN TO WORLD</button>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 }
 
@@ -203,7 +204,7 @@ export function ImmersiveWorld() {
           <footer className="world-footer"><span>UMANG SHARMA / TRUV TECH &amp; CONSULTANCY</span><span>YOUR VISION. OUR EXPERTISE.</span><span>© 2026</span></footer>
         </section>
       </main>
-      {selectedProject && <ProjectDetails project={selectedProject} onClose={closeProject} />}
+      <AnimatePresence>{selectedProject && <ProjectDetails project={selectedProject} onClose={closeProject} />}</AnimatePresence>
     </div>
   );
 }
