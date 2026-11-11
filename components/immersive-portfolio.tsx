@@ -100,6 +100,7 @@ export function ImmersivePortfolio() {
           <a href="#work">Selected work</a>
           <a href="#about">About</a>
           <a href="#services">Capabilities</a>
+          <a href="/platform-engineering">Platform Engineering</a>
           <a href="#contact">Contact</a>
         </nav>
         <a className="im-availability" href={`mailto:${links.email}`}><i /> Open to conversations</a>
