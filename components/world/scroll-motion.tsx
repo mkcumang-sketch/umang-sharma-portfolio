@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export function ScrollMotion() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 760px)").matches) return;
     const scope = document.querySelector(".game-portfolio");
     if (!scope) return;
     let disposed = false;
