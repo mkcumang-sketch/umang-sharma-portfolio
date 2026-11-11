@@ -64,3 +64,10 @@ npm run build
 - Phone: +91 89600 82060
 - Company: TRUV TECH & CONSULTANCY
 - Tagline: Your Vision. Our Expertise.
+
+
+## Platform Engineering portfolio
+
+A dedicated evidence-led career page is available at [/platform-engineering](https://umang-sharma-portfolio.vercel.app/platform-engineering). It presents verified repository work across Docker, Docker Compose, GitHub Actions, Cloudflare, Vercel, databases, security and deployment documentation.
+
+The page explicitly distinguishes implemented configurations from documented deployment targets and does not claim unverified Kubernetes, Terraform, Ansible, Jenkins, monitoring stacks, zero-downtime releases or production SLO metrics. Mailflare is identified as upstream-derived work. Resume-reported business impact is labelled as resume-reported rather than independently measured.
