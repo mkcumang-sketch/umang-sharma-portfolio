@@ -24,8 +24,10 @@ Graphite and black foundations, warm metallic gold, warm white and restrained em
 - Next.js 15 App Router, React 19 and TypeScript
 - Tailwind CSS (existing project utilities)
 - Three.js, React Three Fiber and React Three Drei
+- Framer Motion for dialog and interface transitions
 - GSAP + ScrollTrigger for section reveals
-- Lenis for smooth scrolling
+- Lenis for desktop smooth scrolling
+- A short custom 3D initialization state with a graceful static fallback
 - Vercel deployment
 
 The WebGL scene is dynamically imported and only enabled on suitable desktop devices. Mobile, reduced-motion and low-resource environments receive a CSS-based fallback. Core portfolio content remains standard HTML and does not require 3D controls.
