@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { links, projects, toolkit } from "@/data/portfolio";
 import type { Project } from "@/data/portfolio";
 import { ScrollMotion } from "@/components/world/scroll-motion";
@@ -40,18 +40,36 @@ function scrollToSection(id: string) {
 }
 
 function ProjectDetails({ project, onClose }: { project: Project; onClose: () => void }) {
+  const closeButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const oldOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const handle = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
+    closeButton.current?.focus();
+    const handle = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+      if (event.key !== "Tab") return;
+      const dialog = closeButton.current?.closest('[role="dialog"]');
+      if (!dialog) return;
+      const items = Array.from(dialog.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
     window.addEventListener("keydown", handle);
-    return () => { document.body.style.overflow = oldOverflow; window.removeEventListener("keydown", handle); };
+    return () => {
+      document.body.style.overflow = oldOverflow;
+      window.removeEventListener("keydown", handle);
+      previousFocus?.focus();
+    };
   }, [onClose]);
 
   return (
     <div className="world-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
       <section className="world-modal" role="dialog" aria-modal="true" aria-labelledby="world-modal-title">
-        <div className="world-modal-top"><span>PROJECT FILE / {project.number}</span><button type="button" onClick={onClose} aria-label="Close project details">CLOSE ×</button></div>
+        <div className="world-modal-top"><span>PROJECT FILE / {project.number}</span><button ref={closeButton} type="button" onClick={onClose} aria-label="Close project details">CLOSE ×</button></div>
         <p className="world-eyebrow">{project.category}</p>
         <h2 id="world-modal-title">{project.name}</h2>
         <p className="world-modal-status">CURRENT STATUS / <strong>{project.status}</strong></p>
@@ -79,6 +97,7 @@ export function ImmersiveWorld() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [architectureFocus, setArchitectureFocus] = useState(architectureNodes[0].id);
   const [activeFilter, setActiveFilter] = useState("All projects");
+  const closeProject = useCallback(() => setSelectedProject(null), []);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -114,7 +133,7 @@ export function ImmersiveWorld() {
       <main id="main-content">
         <section className={"world-hero" + (mode === "quick" ? " is-quick" : "")} id="top">
           <div className="world-hero-backdrop" aria-hidden="true"><span /><i /><b /></div>
-          {sceneEnabled && <div className="world-scene" aria-label="Interactive 3D portfolio world"><PortfolioScene paused={paused} onNavigate={navigate} /></div>}
+          {sceneEnabled && <div className="world-scene" role="group" aria-label="Interactive 3D portfolio world"><PortfolioScene paused={paused} onNavigate={navigate} /></div>}
           {!sceneEnabled && <div className="world-static-orb" aria-hidden="true"><span /><i /><b /></div>}
           <div className="world-hero-copy">
             <p className="world-eyebrow"><i /> INDEPENDENT BUILDER / FOUNDER AT TRUV TECH &amp; CONSULTANCY</p>
@@ -184,7 +203,7 @@ export function ImmersiveWorld() {
           <footer className="world-footer"><span>UMANG SHARMA / TRUV TECH &amp; CONSULTANCY</span><span>YOUR VISION. OUR EXPERTISE.</span><span>© 2026</span></footer>
         </section>
       </main>
-      {selectedProject && <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />}
+      {selectedProject && <ProjectDetails project={selectedProject} onClose={closeProject} />}
     </div>
   );
 }
