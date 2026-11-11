@@ -95,6 +95,7 @@ export function ImmersiveWorld() {
   const [mode, setMode] = useState<"explore" | "quick">("explore");
   const [paused, setPaused] = useState(false);
   const [sceneEnabled, setSceneEnabled] = useState(false);
+  const [sceneReady, setSceneReady] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [architectureFocus, setArchitectureFocus] = useState(architectureNodes[0].id);
   const [activeFilter, setActiveFilter] = useState("All projects");
@@ -105,11 +106,14 @@ export function ImmersiveWorld() {
     const small = window.matchMedia("(max-width: 760px)").matches;
     const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
     const cores = navigator.hardwareConcurrency ?? 8;
-    setSceneEnabled(!reduced && !small && memory >= 4 && cores >= 4);
+    const probe = document.createElement("canvas");
+    const webglAvailable = Boolean(probe.getContext("webgl2") || probe.getContext("webgl"));
+    setSceneEnabled(!reduced && !small && memory >= 4 && cores >= 4 && webglAvailable);
     setPaused(reduced);
   }, []);
 
   const navigate = useCallback((id: string) => scrollToSection(id), []);
+  const markSceneReady = useCallback(() => setSceneReady(true), []);
   const selectedArchitecture = useMemo(
     () => architectureNodes.find((node) => node.id === architectureFocus) ?? architectureNodes[0],
     [architectureFocus],
@@ -134,8 +138,9 @@ export function ImmersiveWorld() {
       <main id="main-content">
         <section className={"world-hero" + (mode === "quick" ? " is-quick" : "")} id="top">
           <div className="world-hero-backdrop" aria-hidden="true"><span /><i /><b /></div>
-          {sceneEnabled && <div className="world-scene" role="group" aria-label="Interactive 3D portfolio world"><PortfolioScene paused={paused} onNavigate={navigate} /></div>}
+          {sceneEnabled && <div className="world-scene" role="group" aria-label="Interactive 3D portfolio world"><PortfolioScene paused={paused} onNavigate={navigate} onReady={markSceneReady} /></div>}
           {!sceneEnabled && <div className="world-static-orb" aria-hidden="true"><span /><i /><b /></div>}
+          {sceneEnabled && !sceneReady && <div className="world-loading-overlay" role="status" aria-live="polite"><span className="world-loader-ring" /><span>INITIALIZING PORTFOLIO WORLD</span></div>}
           <div className="world-hero-copy">
             <p className="world-eyebrow"><i /> INDEPENDENT BUILDER / FOUNDER AT TRUV TECH &amp; CONSULTANCY</p>
             <h1>UMANG<br /><em>SHARMA.</em></h1>
