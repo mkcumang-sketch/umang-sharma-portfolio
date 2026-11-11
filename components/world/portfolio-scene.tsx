@@ -120,12 +120,13 @@ function World({ paused, onNavigate }: { paused: boolean; onNavigate: (id: strin
   );
 }
 
-export default function PortfolioScene({ paused, onNavigate }: { paused: boolean; onNavigate: (id: string) => void }) {
+export default function PortfolioScene({ paused, onNavigate, onReady }: { paused: boolean; onNavigate: (id: string) => void; onReady: () => void }) {
   return (
     <Canvas
       dpr={[1, 1.35]}
       camera={{ position: [0, 3.5, 10.8], fov: 42, near: 0.1, far: 60 }}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+      onCreated={() => onReady()}
       fallback={<div className="world-canvas-fallback" aria-hidden="true" />}
     >
       <World paused={paused} onNavigate={onNavigate} />
