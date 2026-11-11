@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export function ScrollMotion() {
-  const root = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const scope = document.querySelector(".game-portfolio");
+    if (!scope) return;
     let disposed = false;
     let lenis: { destroy: () => void } | undefined;
     let context: { revert: () => void } | undefined;
@@ -16,7 +16,7 @@ export function ScrollMotion() {
       import("gsap/ScrollTrigger"),
       import("lenis"),
     ]).then(([gsapModule, triggerModule, lenisModule]) => {
-      if (disposed || !root.current) return;
+      if (disposed) return;
       const gsap = gsapModule.gsap;
       const ScrollTrigger = triggerModule.ScrollTrigger;
       gsap.registerPlugin(ScrollTrigger);
@@ -32,7 +32,7 @@ export function ScrollMotion() {
             scrollTrigger: { trigger: element, start: "top 88%", once: true },
           });
         });
-      }, root.current);
+      }, scope);
       ScrollTrigger.refresh();
     }).catch(() => {
       // Native scrolling and visible content remain the fallback if motion chunks fail.
@@ -45,5 +45,5 @@ export function ScrollMotion() {
     };
   }, []);
 
-  return <div ref={root} className="world-motion-root" aria-hidden="true" />;
+  return null;
 }
