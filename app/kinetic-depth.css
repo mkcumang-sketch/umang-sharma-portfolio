@@ -40,6 +40,7 @@
 }
 .im-orbit { box-shadow: 0 0 28px rgba(213,161,94,.08), inset 0 0 18px rgba(213,161,94,.04); }
 .im-sculpture { filter: drop-shadow(0 35px 45px rgba(0,0,0,.5)); animation: none; }
+.im-mini-study-object { animation: none; }
 .im-sculpture-core { box-shadow: inset 14px 12px 28px rgba(255,255,255,.18), inset -18px -20px 35px rgba(0,0,0,.38), 0 0 65px rgba(213,161,94,.2); }
 .im-stage-plinth {
   border-color: rgba(255,255,255,.24);
@@ -118,6 +119,7 @@
 @keyframes depth-halo { from { transform: scale(.92); opacity: .55; } to { transform: scale(1.08); opacity: .9; } }
 @keyframes depth-grid-drift { from { background-position: 0 0,0 0; } to { background-position: 0 42px,42px 0; } }
 @keyframes depth-orb-breathe { 0%,100% { transform: rotateX(18deg) translateY(0); } 50% { transform: rotateX(23deg) translateY(-8px); } }
+.im-section-heading,.im-project,.im-about-copy,.im-process>div,.im-capability-grid article,.im-toolkit { translate: 0 0; }
 @supports ((animation-timeline: view()) and (animation-range: entry)) {
   .im-section-heading,.im-project,.im-about-copy,.im-process>div,.im-capability-grid article,.im-toolkit {
     animation: depth-enter linear both;
