@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import "./platform-engineering.css";
 
 const groups = [
@@ -9,6 +10,14 @@ const groups = [
   { title: "Data & State", items: ["PostgreSQL", "MongoDB", "SQLite / MySQL", "Prisma ORM", "Drizzle ORM", "Redis / Upstash"] },
   { title: "Security & Reliability", items: ["Tenant isolation", "Role-based access", "Environment secrets", "Rate limiting", "Credential-vault patterns", "Migration safety", "Automated security tests"] },
   { title: "Engineering & Automation", items: ["TypeScript", "JavaScript", "Node.js", "SQL", "PHP", "Git / GitHub", "Power BI"] },
+];
+
+const growthAreas = [
+  { title: "Linux & system administration", detail: "Building deeper command-line, process, service, permissions and server operations experience." },
+  { title: "Networking fundamentals", detail: "Developing practical depth in DNS, HTTP/TLS, routing, ports, reverse proxies and connectivity troubleshooting." },
+  { title: "Infrastructure as Code", detail: "Learning repeatable infrastructure definition and environment provisioning; no Terraform or Ansible project is claimed yet." },
+  { title: "Monitoring & observability", detail: "Developing monitoring, structured logging, metrics, tracing and alerting practices; no Prometheus/Grafana deployment is claimed." },
+  { title: "Troubleshooting & incidents", detail: "Strengthening systematic diagnosis, log analysis, rollback decisions, incident notes and post-incident learning." },
 ];
 
 const projects = [
@@ -45,7 +54,7 @@ const projects = [
     problem: "Small businesses need a maintainable shared workspace for contacts, companies, deals, tasks and team operations.",
     work: ["Implemented organization-oriented CRM foundations.", "Built contact, company, deal pipeline and task modules.", "Added CSV import and drag-and-drop pipeline interactions.", "Documented deployment and self-hosting configuration."],
     evidence: "The repository README identifies email integration, advanced reporting, workflow automation, granular RBAC and calendar sync as roadmap items. They are not claimed as shipped features.",
-    link: "https://github.com/mkcumang-sketch/TruvtechCRM", linkLabel: "Open TRUV CRM repository",
+    link: "", linkLabel: "",
     impact: "Shows full-stack platform architecture and deployable application foundations. No production SLO or cost metrics were identified."
   },
   {
@@ -54,7 +63,7 @@ const projects = [
     problem: "A property business needs discoverable listings, enquiry capture and a protected administration workflow.",
     work: ["Built database-backed listing, filtering and property-detail workflows.", "Implemented enquiry handling with validation and CSRF protection.", "Documented managed-hosting and Linux VPS deployment options.", "Documented environment setup, database seeding and production handover steps."],
     evidence: "The repository describes email delivery as not configured and identifies some dashboard placeholders. Demo administrator credentials in documentation require removal before production distribution.",
-    link: "https://github.com/mkcumang-sketch/DreamProperty", linkLabel: "Open DreamProperty repository",
+    link: "https://github.com/mkcumang-sketch/DreamProperties", linkLabel: "Open Dream Properties repository",
     impact: "Demonstrates server-side application delivery, relational data workflows and deployment planning across managed hosting and VPS environments."
   },
   {
@@ -98,7 +107,7 @@ const experience = [
 export default function PlatformEngineeringPage() {
   return (
     <main className="pe-page">
-      <header className="pe-nav"><a href="/" className="pe-brand">UMANG SHARMA <span>/ PLATFORM ENGINEERING</span></a><nav><a href="#competencies">Competencies</a><a href="#projects">Case studies</a><a href="#experience">Experience</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header>
+      <header className="pe-nav"><Link href="/" className="pe-brand">UMANG SHARMA <span>/ PLATFORM ENGINEERING</span></Link><nav><a href="#competencies">Competencies</a><a href="#projects">Case studies</a><a href="#experience">Experience</a><a href="https://github.com/mkcumang-sketch" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header>
       <section className="pe-hero">
         <p className="pe-kicker">PLATFORM ENGINEERING · DEVOPS · CLOUD DELIVERY</p>
         <h1>Build it. Ship it.<br/><em>Keep it reliable.</em></h1>
@@ -111,6 +120,7 @@ export default function PlatformEngineeringPage() {
         <div className="pe-section-head"><p className="pe-kicker">01 / TECHNICAL COMPETENCIES</p><h2>Tools backed by<br/><em>repository evidence.</em></h2><p>These are technologies and practices identified in the resume and inspected repositories. A configured integration is not automatically a claim of production operation.</p></div>
         <div className="pe-skills">{groups.map(g=><article key={g.title}><h3>{g.title}</h3><div>{g.items.map(x=><span key={x}>{x}</span>)}</div></article>)}</div>
         <div className="pe-honesty"><strong>Evidence boundary</strong><p>No Terraform, Ansible, Jenkins, Kubernetes manifests, Helm, ArgoCD, Prometheus, Grafana, ELK or Datadog implementation was identified in the inspected repositories. These are not presented as hands-on skills. Kubernetes appears in deployment planning documentation only.</p></div>
+        <div className="pe-learning"><div><p className="pe-kicker">DEVELOPING DEPTH / LEARNING ROADMAP</p><h3>Areas I’m actively<br/><em>building depth in.</em></h3><p>These are growth areas, not claims of professional production ownership or completed certifications.</p></div><div className="pe-learning-grid">{growthAreas.map(area=><article key={area.title}><span>LEARNING FOCUS</span><h4>{area.title}</h4><p>{area.detail}</p></article>)}</div></div>
       </section>
       <section className="pe-section" id="projects">
         <div className="pe-section-head"><p className="pe-kicker">02 / SELECTED ENGINEERING WORK</p><h2>From application code<br/>to <em>operational reality.</em></h2><p>Case studies distinguish implementation evidence, documented deployment targets and measured outcomes. Where no metric exists, none is invented.</p></div>

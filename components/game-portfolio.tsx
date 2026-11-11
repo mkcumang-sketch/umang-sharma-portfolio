@@ -102,7 +102,7 @@ export function GamePortfolio() {
     </header>
 
     <aside className="game-quest" aria-label="Current quest">
-      <span className="quest-kicker">MAIN QUEST</span><strong>Explore Umang's world</strong><span className="quest-progress"><i style={{ width: ((activeZone + 1) / zones.length * 100) + "%" }}/></span><small>ZONE {activeZone + 1} / {zones.length}</small>
+      <span className="quest-kicker">MAIN QUEST</span><strong>Explore Umang&apos;s world</strong><span className="quest-progress"><i style={{ width: ((activeZone + 1) / zones.length * 100) + "%" }}/></span><small>ZONE {activeZone + 1} / {zones.length}</small>
     </aside>
 
     <main id="main-content" tabIndex={-1}>
@@ -132,14 +132,14 @@ export function GamePortfolio() {
 
       <section className="game-zone profile-zone" id="profile">
         <div className="zone-heading"><span>ZONE 02 / PLAYER PROFILE</span><span>QUEST LOG / ABOUT</span></div>
-        <div className="profile-layout"><div><p className="game-eyebrow">THE BUILDER BEHIND THE SYSTEMS</p><h2>Curious mind.<br/><em>Builder mindset.</em></h2></div><div className="profile-copy"><p>I'm Umang Sharma, founder of TRUV TECH &amp; CONSULTANCY. I work across product development, AI-assisted workflows, business automation and digital experiences.</p><p>My focus is practical technology: understand the process, remove repetitive work and build a system people can actually use — from an early product idea to the day-to-day operations behind it.</p><a href={links.linkedin} target="_blank" rel="noreferrer">OPEN LINKEDIN PROFILE ↗</a></div></div>
+        <div className="profile-layout"><div><p className="game-eyebrow">THE BUILDER BEHIND THE SYSTEMS</p><h2>Curious mind.<br/><em>Builder mindset.</em></h2></div><div className="profile-copy"><p>I&apos;m Umang Sharma, founder of TRUV TECH &amp; CONSULTANCY. I work across product development, AI-assisted workflows, business automation and digital experiences.</p><p>My focus is practical technology: understand the process, remove repetitive work and build a system people can actually use — from an early product idea to the day-to-day operations behind it.</p><a href={links.linkedin} target="_blank" rel="noreferrer">OPEN LINKEDIN PROFILE ↗</a></div></div>
         <div className="company-signature"><span className="company-mark">T</span><div><small>THE COMPANY</small><strong>{links.company}</strong><span>{links.tagline}</span></div></div>
         <div className="stats-grid"><div className="stat-tile"><small>ROLE</small><strong>Founder</strong><span>Product / Systems</span></div><div className="stat-tile"><small>FOCUS</small><strong>Useful tech</strong><span>Build · Test · Improve</span></div><div className="stat-tile"><small>WORK</small><strong>Digital products</strong><span>AI · Automation · Design</span></div><div className="stat-tile"><small>COLLABORATION</small><strong>Remote-ready</strong><span>India & beyond</span></div></div>
       </section>
 
       <section className="game-zone projects-zone" id="projects">
         <div className="zone-heading"><span>ZONE 03 / PROJECT ISLANDS</span><span>SELECT A PROJECT TO EXPLORE</span></div>
-        <div className="zone-title-row"><h2>Worlds I've<br/><em>helped build.</em></h2><p>Selected products and client work. Project stages are kept clear, and repository links appear only where a public reference is available.</p></div>
+        <div className="zone-title-row"><h2>Worlds I&apos;ve<br/><em>helped build.</em></h2><p>Selected products and client work. Project stages are kept clear, and repository links appear only where a public reference is available.</p></div>
         <div className="project-islands" aria-label="Selected projects">{projects.map((project, index) => <article className={"project-island project-island-" + (index % 4)} key={project.number}>
           <div className="project-island-art"><span className="island-number">{project.number}</span><div className="mini-world"><i/><i/><i/></div><span className="island-type">{project.category}</span></div>
           <div className="project-island-info"><div><span className={"project-status-dot status-" + project.status.toLowerCase().replaceAll(" ", "-")}/>{project.status}</div><h3>{project.name}</h3><p>{project.description}</p><div className="project-tags">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><div className="project-links"><button className="project-inspect" type="button" onClick={() => setSelectedProject(project)} aria-label={"Inspect " + project.name}>INSPECT ISLAND ↗</button>{project.repository ? <a href={project.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>NO PUBLIC REPOSITORY</span>}</div></div>
@@ -150,14 +150,14 @@ export function GamePortfolio() {
         <div className="zone-heading"><span>ZONE 04 / SERVICES & SKILLS</span><span>WHAT I CAN HELP BUILD</span></div>
         <div className="zone-title-row"><h2>From problem<br/><em>to practical.</em></h2><p>TRUV TECH &amp; CONSULTANCY works across technology, automation and digital operations. Scope is shaped around the real workflow, not a one-size-fits-all package.</p></div>
         <div className="service-grid">{services.map((service, index) => <article className="service-card" key={service.name}><span className="service-number">{String(index + 1).padStart(2, "0")}</span><div><small>{service.group}</small><h3>{service.name}</h3><p>{service.note}</p></div><span className="service-arrow">↗</span></article>)}</div>
-        <div className="inventory-heading"><p className="game-eyebrow">TOOLS & WORKING TOOLKIT</p><h3>Builder's inventory.</h3></div>
+        <div className="inventory-heading"><p className="game-eyebrow">TOOLS & WORKING TOOLKIT</p><h3>Builder&apos;s inventory.</h3></div>
         <div className="inventory-grid">{toolkit.map((item, index) => <div className="inventory-item" key={item.name}><span className="inventory-slot">{String(index + 1).padStart(2, "0")}</span><div><small>{item.group}</small><strong>{item.name}</strong><span>{item.note}</span></div></div>)}</div>
       </section>
 
       <section className="game-zone contact-zone" id="contact">
         <div className="zone-heading"><span>ZONE 05 / FINAL PORTAL</span><span>START A CONVERSATION</span></div>
         <div className="portal-scene" aria-hidden="true"><div className="portal-ring portal-ring-back"/><div className="portal-ring portal-ring-front"/><div className="portal-core">↗</div></div>
-        <div className="contact-content"><p className="game-eyebrow">NEW QUEST AVAILABLE</p><h2>Have a good<br/><em>problem to solve?</em></h2><p>Tell me what you're building, improving or trying to automate. Let's shape the right solution around it.</p><a className="game-primary" href={"mailto:" + links.email}>EMAIL UMANG <span>↗</span></a><div className="contact-direct"><a href={"tel:" + links.phone}>CALL {links.phoneDisplay}</a><a href={links.github} target="_blank" rel="noreferrer">GITHUB ↗</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={links.instagram} target="_blank" rel="noreferrer">INSTAGRAM ↗</a></div><p className="contact-company">{links.company}<span>{links.tagline}</span></p></div>
+        <div className="contact-content"><p className="game-eyebrow">NEW QUEST AVAILABLE</p><h2>Have a good<br/><em>problem to solve?</em></h2><p>Tell me what you&apos;re building, improving or trying to automate. Let&apos;s shape the right solution around it.</p><a className="game-primary" href={"mailto:" + links.email}>EMAIL UMANG <span>↗</span></a><div className="contact-direct"><a href={"tel:" + links.phone}>CALL {links.phoneDisplay}</a><a href={links.github} target="_blank" rel="noreferrer">GITHUB ↗</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={links.instagram} target="_blank" rel="noreferrer">INSTAGRAM ↗</a></div><p className="contact-company">{links.company}<span>{links.tagline}</span></p></div>
         <footer className="game-footer"><span>UMANG SHARMA / AI · DESIGN · OPERATIONS</span><span>THANKS FOR EXPLORING.</span></footer>
       </section>
     </main>
@@ -175,7 +175,7 @@ export function GamePortfolio() {
         <div className="project-modal-section"><h3>FEATURES / WHAT IT DOES</h3><ul className="project-feature-list">{selectedProject.features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div>
         <div className="project-modal-section"><h3>LANGUAGES</h3><div className="project-language-list">{selectedProject.languages.map((language) => <span key={language}>{language}</span>)}</div></div>
         <div className="project-modal-section"><h3>FRAMEWORKS & TECHNOLOGY</h3><div className="project-tags">{selectedProject.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
-        <div className="project-modal-section"><h3>ARCHITECTURE / HOW IT'S BUILT</h3><p className="project-architecture">{selectedProject.architecture}</p></div>
+        <div className="project-modal-section"><h3>ARCHITECTURE / HOW IT&apos;S BUILT</h3><p className="project-architecture">{selectedProject.architecture}</p></div>
         {selectedProject.verificationNote && <p className="project-verification">{selectedProject.verificationNote}</p>}
         <div className="project-modal-actions">{selectedProject.repository ? <a href={selectedProject.repository} target="_blank" rel="noreferrer">OPEN REPOSITORY ↗</a> : <span>Public repository not listed</span>}<button type="button" onClick={() => setSelectedProject(null)}>BACK TO WORLD</button></div>
       </section>

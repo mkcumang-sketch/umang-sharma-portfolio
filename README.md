@@ -1,37 +1,40 @@
-# Umang Sharma — Creative Technologist & Technical Product Builder
+# Umang Sharma — Immersive Developer Portfolio
 
-An immersive, responsive portfolio built with Next.js 15, React 19, TypeScript and CSS 3D transforms.
-
-## Art direction
-- Dark studio palette with restrained warm-metal accents
-- Full-screen abstract 3D-inspired hero sculpture and cinematic typography
-- CSS-generated visual studies, project archive and interactive case-study dialogs
-- Responsive layouts, accessible navigation, keyboard-dismissable dialogs and reduced-motion support
-- No voice agent, microphone interaction or unconfigured AI terminal
+A cinematic, responsive portfolio built on the existing Next.js App Router site. The homepage is an explorable 3D environment with an accessible quick-navigation mode and a lightweight static fallback.
 
 ## Experience
-- Selected-work gallery with category filters
-- Case studies with verified overview, scope, implementation details, stack and project status
-- About section, build process, capabilities, working toolkit and direct contact links
-- Optional YouTube / Vimeo showreel modal
-- Mobile-first navigation and responsive project layouts
 
-## Showreel setup
-The showreel modal is ready for a public YouTube or Vimeo video. Set this optional environment variable in Vercel or your local environment:
+- Cinematic introduction for Umang Sharma — Vibe Coder, Systems Builder, AI Solutions Architect and Founder at TRUV Tech & Consultancy.
+- Interactive 3D portfolio scene using Three.js, React Three Fiber and Drei.
+- Six explorable destinations: About, Skills, Projects, Platform Engineering, Experience and Contact.
+- Explore mode with clickable 3D portals and Quick Navigation with standard HTML links.
+- Pause control for the animated 3D scene.
+- Reduced-motion, mobile and lower-powered-device fallbacks.
+- Project archive with filters, keyboard-accessible case-study dialogs and verified public repository links where available.
+- Interactive reference architecture diagram, technical toolkit and learning-focus disclosure.
+- Dedicated evidence-led career page at `/platform-engineering`.
+- No voice agent, microphone interaction, fake achievements, fabricated metrics or unsupported production claims.
 
-```bash
-NEXT_PUBLIC_SHOWREEL_URL=https://www.youtube.com/watch?v=YOUR_VIDEO_ID
-```
+## Visual direction
 
-Supported URLs include YouTube watch / share links and Vimeo video links. If the variable is not configured, the modal displays a clear setup message instead of substituting an unrelated demo reel.
+Graphite and black foundations, warm metallic gold, warm white and restrained emerald accents. The 3D environment uses procedural geometry rather than unverified client assets or third-party model credits.
 
-## Project imagery and 3D assets
-Current portfolio artwork is generated with CSS and is labelled as visual studies. It is not represented as client renders, finished 3D models or production screenshots. Original renders, moodboards, wireframes, turntables and GLB files can be added once approved project assets are supplied. No third-party model or client credit is invented.
+## Stack
 
-## Selected work
-The portfolio presents TRUV CA, Ask2Global / TaskFlow, Dream Properties, TRUV Tech CRM, TRUV Tech Official Website and EssentialRush.
+- Next.js 15 App Router, React 19 and TypeScript
+- Tailwind CSS (existing project utilities)
+- Three.js, React Three Fiber and React Three Drei
+- Framer Motion for dialog and interface transitions
+- GSAP + ScrollTrigger for section reveals
+- Lenis for desktop smooth scrolling
+- A short custom 3D initialization state with a graceful static fallback
+- Vercel deployment
 
-Project stages remain unchanged:
+The WebGL scene is dynamically imported and only enabled on suitable desktop devices. Mobile, reduced-motion and low-resource environments receive a CSS-based fallback. Core portfolio content remains standard HTML and does not require 3D controls.
+
+## Project integrity
+
+The six portfolio project statuses remain unchanged:
 - TRUV CA — In Development
 - Ask2Global / TaskFlow — Live Demo
 - Dream Properties — Client Project
@@ -39,35 +42,34 @@ Project stages remain unchanged:
 - TRUV Tech Official Website — In Development
 - EssentialRush — Client Project
 
-Project details separate documented functionality, technologies, architecture and verification notes. Externally blocked or roadmap-only features are not described as shipped.
+The project archive separates documented implementation from roadmap or externally configured features. Repository links are shown only when publicly verifiable. The TRUV Tech CRM repository is private and is not exposed as a public link. The Dream Properties link points to the verified PHP/MySQL property application repository, not the separate interior-design project.
 
-## Portfolio stack
-- Next.js 15 + React 19 + TypeScript
-- Tailwind CSS (existing project styling utilities)
-- CSS 3D transforms and responsive motion design
-- Vercel deployment
+## Platform Engineering evidence
+
+The career page includes eight engineering case studies, a six-role experience timeline, education and a learning roadmap. Linux administration, networking, Infrastructure as Code, monitoring/observability and incident handling are explicitly labelled as developing areas unless direct repository evidence supports a stronger claim. No unverified certifications, tools or production metrics are invented.
 
 ## Local development
+
 ```bash
 npm install
 npm run dev
 ```
 
-## Production checks
+## Quality checks
+
 ```bash
+npm run lint
 npm run typecheck
 npm run build
 ```
 
+## Deployment
+
+Vercel uses the existing Next.js project configuration. Preview protection should remain enabled; validate protected previews using an authenticated browser session rather than weakening access controls.
+
 ## Contact
+
 - Email: truvtechteam@gmail.com
 - Phone: +91 89600 82060
 - Company: TRUV TECH & CONSULTANCY
 - Tagline: Your Vision. Our Expertise.
-
-
-## Platform Engineering portfolio
-
-A dedicated evidence-led career page is available at [/platform-engineering](https://umang-sharma-portfolio.vercel.app/platform-engineering). It presents verified repository work across Docker, Docker Compose, GitHub Actions, Cloudflare, Vercel, databases, security and deployment documentation.
-
-The page explicitly distinguishes implemented configurations from documented deployment targets and does not claim unverified Kubernetes, Terraform, Ansible, Jenkins, monitoring stacks, zero-downtime releases or production SLO metrics. Mailflare is identified as upstream-derived work. Resume-reported business impact is labelled as resume-reported rather than independently measured.
