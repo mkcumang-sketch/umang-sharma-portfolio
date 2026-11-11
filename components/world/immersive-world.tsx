@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { links, projects, toolkit } from "@/data/portfolio";
@@ -127,7 +128,7 @@ export function ImmersiveWorld() {
       <header className="world-header">
         <a className="world-brand" href="#top" aria-label="Umang Sharma — home"><span className="world-brand-mark">U<span>.</span></span><span>UMANG SHARMA<small>BUILDER / SYSTEMS / EXPERIENCE</small></span></a>
         <nav className="world-quick-nav" aria-label="Quick navigation">
-          <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="/platform-engineering">DevOps</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+          <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><Link href="/platform-engineering">DevOps</Link><a href="#experience">Experience</a><a href="#contact">Contact</a>
         </nav>
         <div className="world-mode-switch" role="group" aria-label="Navigation mode">
           <button type="button" aria-pressed={mode === "explore"} className={mode === "explore" ? "is-active" : ""} onClick={() => setMode("explore")}>EXPLORE</button>
@@ -148,7 +149,7 @@ export function ImmersiveWorld() {
             <p className="world-intro">I turn ideas into practical digital products through AI-assisted development, modern engineering, and business-focused execution.</p>
             <div className="world-actions">
               <a className="world-primary" href="#about">START EXPLORING <span>↗</span></a>
-              <a className="world-secondary" href="/platform-engineering">PLATFORM ENGINEERING <span>↗</span></a>
+              <Link className="world-secondary" href="/platform-engineering">PLATFORM ENGINEERING <span>↗</span></Link>
             </div>
             <div className="world-meta"><span>INDIA / 2026</span><span>PRODUCTS · SYSTEMS · DELIVERY</span><span>TRUV TECH &amp; CONSULTANCY</span></div>
           </div>
@@ -194,13 +195,13 @@ export function ImmersiveWorld() {
             <div className="world-architecture-detail" aria-live="polite"><strong>{selectedArchitecture.title}</strong><p>{selectedArchitecture.detail}</p></div>
           </div>
           <div className="world-engineering-tags"><i>Docker &amp; Compose</i><i>GitHub Actions</i><i>Vercel</i><i>Cloudflare</i><i>Linux VPS / Nginx / PM2 (documented)</i><i>PostgreSQL</i><i>Redis</i><i>Release runbooks</i><i>Security tests</i></div>
-          <a className="world-engineering-link" href="/platform-engineering">OPEN PLATFORM ENGINEERING CAREER PAGE <span>↗</span></a>
+          <Link className="world-engineering-link" href="/platform-engineering">OPEN PLATFORM ENGINEERING CAREER PAGE <span>↗</span></Link>
         </section>
 
         <section className="world-section world-experience" id="experience">
           <div className="world-section-label"><span>05 / EXPERIENCE &amp; CASE STUDIES</span><span>CAREER CONTEXT / TECHNICAL EVIDENCE</span></div>
           <div className="world-split"><div className="world-section-title game-reveal"><p className="world-eyebrow">WORK, OWNERSHIP &amp; LEARNING</p><h2>Experience<br /><em>in context.</em></h2></div><p className="world-section-intro game-reveal">A cross-functional path through product building, operations, project coordination and business execution. The dedicated career page provides the full timeline, education and eight repository-backed technical case studies.</p></div>
-          <div className="world-experience-panel"><div><span>CAREER TIMELINE</span><strong>6 professional roles</strong><p>Founder and technical leadership, operations, project management, administration and team coordination.</p></div><div><span>TECHNICAL CASE STUDIES</span><strong>08 engineering studies</strong><p>Evidence-led work covering containers, deployment, application security, databases and delivery practices.</p></div><a href="/platform-engineering#experience">VIEW FULL EXPERIENCE &amp; CASE STUDIES ↗</a></div>
+          <div className="world-experience-panel"><div><span>CAREER TIMELINE</span><strong>6 professional roles</strong><p>Founder and technical leadership, operations, project management, administration and team coordination.</p></div><div><span>TECHNICAL CASE STUDIES</span><strong>08 engineering studies</strong><p>Evidence-led work covering containers, deployment, application security, databases and delivery practices.</p></div><Link href="/platform-engineering#experience">VIEW FULL EXPERIENCE &amp; CASE STUDIES ↗</Link></div>
         </section>
 
         <section className="world-contact" id="contact">
